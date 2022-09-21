@@ -48,4 +48,20 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <AndroidResource Remove="NovaPasta\**" />
+	  <Compile Remove="NovaPasta\**" />
+	  <EmbeddedResource Remove="NovaPasta\**" />
+	  <MauiCss Remove="NovaPasta\**" />
+	  <MauiXaml Remove="NovaPasta\**" />
+	  <None Remove="NovaPasta\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.9" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
 </Project>
