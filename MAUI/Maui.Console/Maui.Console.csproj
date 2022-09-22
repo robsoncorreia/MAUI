@@ -14,4 +14,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Maui.Infrastructure\Maui.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
