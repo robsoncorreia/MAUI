@@ -39,5 +39,6 @@ namespace Maui.Entity.Entity
             return !(date > DateTime.Now);
         }
 
+        public int Id { get; set; }
     }
 }
