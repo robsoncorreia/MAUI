@@ -3,8 +3,11 @@
     x:Class="Maui.App.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Maui.App.ViewModels.Main"
     xmlns:p="clr-namespace:Maui.App.Properties">
-
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
@@ -32,10 +35,10 @@
 
             <Button
                 x:Name="CounterBtn"
-                Clicked="OnCounterClicked"
+                Command="{Binding OnCounterClickedCommand}"
                 HorizontalOptions="Center"
                 SemanticProperties.Hint="{x:Static p:Resources.Counts_the_number_of_times_you_click}"
-                Text="{x:Static p:Resources.Click_Me}" />
+                Text="{Binding CounterText}" />
 
         </VerticalStackLayout>
     </ScrollView>

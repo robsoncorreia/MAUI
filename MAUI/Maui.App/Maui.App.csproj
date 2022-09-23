@@ -71,8 +71,6 @@
 	  <Folder Include="Extensions\" />
 	  <Folder Include="Helpers\" />
 	  <Folder Include="Models\" />
-	  <Folder Include="Views\" />
-	  <Folder Include="ViewModels\" />
 	  <Folder Include="Validations\" />
 	  <Folder Include="Triggers\" />
 	</ItemGroup>
@@ -84,6 +82,12 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Maui.Domain\Maui.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Project\ProjectView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
