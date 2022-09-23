@@ -1,5 +1,10 @@
-﻿using Maui.App.Service.Navigation;
+﻿using CommunityToolkit.Maui;
+using Maui.App.Service.Dialog;
+using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
+using Maui.App.ViewModels.Main;
+using Maui.App.ViewModels.Project;
+using Maui.App.Views.Project;
 using Maui.Domain.Interface.Project;
 using Maui.Domain.Service;
 
@@ -9,16 +14,18 @@ namespace Maui.App
     {
         public static MauiApp CreateMauiApp()
         {
-            var builder = MauiApp.CreateBuilder();
+            MauiAppBuilder builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
+               .RegisterViewModels()
+               .RegisterViews()
                .RegisterAppServices();
-
 
             return builder.Build();
         }
@@ -26,12 +33,20 @@ namespace Maui.App
         {
             mauiAppBuilder.Services.AddSingleton<IProjectService, ProjectService>();
             mauiAppBuilder.Services.AddSingleton<ISettingsService, SettingsService>();
-            mauiAppBuilder.Services.AddSingleton<INavigateService, NavigateService>();
+            mauiAppBuilder.Services.AddSingleton<IDialogService, DialogService>();
+            mauiAppBuilder.Services.AddSingleton<INavigationService, NavigateService>();
             return mauiAppBuilder;
         }
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
         {
-            //mauiAppBuilder.Services.AddTransient<ProjectView>();
+            mauiAppBuilder.Services.AddTransient<ProjectView>();
+            mauiAppBuilder.Services.AddTransient<MainPage>();
+            return mauiAppBuilder;
+        }
+        public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
+        {
+            mauiAppBuilder.Services.AddSingleton<MainViewModel>();
+            mauiAppBuilder.Services.AddSingleton<ProjectViewModel>();
 
             return mauiAppBuilder;
         }

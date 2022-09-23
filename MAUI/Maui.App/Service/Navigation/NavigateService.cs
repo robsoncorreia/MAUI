@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Maui.App.Service.Navigation
 {
-    public class NavigateService: INavigateService
+    public class NavigateService: INavigationService
     {
         private readonly ISettingsService _settingsService;
 
@@ -19,7 +19,7 @@ namespace Maui.App.Service.Navigation
         public Task InitializeAsync() =>
             NavigateToAsync(
                 string.IsNullOrEmpty(_settingsService.AuthAccessToken)
-                    ? "//Login"
+                    ? "//Project/Project"
                     : "//Main/Catalog");
 
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)

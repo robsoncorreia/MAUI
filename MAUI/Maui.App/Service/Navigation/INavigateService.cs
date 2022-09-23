@@ -1,6 +1,6 @@
 ﻿namespace Maui.App.Service.Navigation
 {
-    public interface INavigateService
+    public interface INavigationService
     {
         Task InitializeAsync();
 

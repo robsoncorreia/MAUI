@@ -1,4 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.Input;
+using Maui.App.Service.Dialog;
+using Maui.App.Service.Navigation;
+using Maui.App.Service.Settings;
 using Maui.App.ViewModels.Base;
 
 namespace Maui.App.ViewModels.Main
@@ -9,6 +12,13 @@ namespace Maui.App.ViewModels.Main
 
         private string _counterText = Properties.Resources.Click_Me;
 
+        public MainViewModel(IDialogService dialogService,
+                             INavigationService navigationService,
+                             ISettingsService settingsService) : base(dialogService, navigationService, settingsService)
+        {
+            OnCounterClickedCommand = new RelayCommand<object>(OnCounterClicked);
+        }
+
         public string CounterText
         {
             get => _counterText;
@@ -16,10 +26,8 @@ namespace Maui.App.ViewModels.Main
         }
 
 
-        public MainViewModel()
-        {
-            OnCounterClickedCommand = new RelayCommand<object>(OnCounterClicked);
-        }
+
+
         public IRelayCommand<string> OnCounterClickedCommand { get; }
 
         private void OnCounterClicked(object @object)

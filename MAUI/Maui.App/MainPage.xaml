@@ -3,11 +3,10 @@
     x:Class="Maui.App.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Maui.App.ViewModels.Main"
-    xmlns:p="clr-namespace:Maui.App.Properties">
-    <ContentPage.BindingContext>
-        <local:MainViewModel />
-    </ContentPage.BindingContext>
+    xmlns:p="clr-namespace:Maui.App.Properties"
+    xmlns:viewModel="clr-namespace:Maui.App.ViewModels.Main"
+    xmlns:viewModelBase="clr-namespace:Maui.App.ViewModels.Base"
+    x:DataType="viewModel:MainViewModel">
     <ScrollView>
         <VerticalStackLayout
             Padding="30,0"
