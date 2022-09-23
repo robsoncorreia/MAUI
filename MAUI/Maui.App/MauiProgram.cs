@@ -1,4 +1,6 @@
-﻿using Maui.Domain.Interface.Project;
+﻿using Maui.App.Service.Navigation;
+using Maui.App.Service.Settings;
+using Maui.Domain.Interface.Project;
 using Maui.Domain.Service;
 
 namespace Maui.App
@@ -23,8 +25,15 @@ namespace Maui.App
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddSingleton<IProjectService, ProjectService>();
+            mauiAppBuilder.Services.AddSingleton<ISettingsService, SettingsService>();
+            mauiAppBuilder.Services.AddSingleton<INavigateService, NavigateService>();
             return mauiAppBuilder;
         }
+        public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
+        {
+            //mauiAppBuilder.Services.AddTransient<ProjectView>();
 
+            return mauiAppBuilder;
+        }
     }
 }
