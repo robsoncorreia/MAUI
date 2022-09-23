@@ -18,11 +18,11 @@ namespace Maui.App.ViewModels.Main
 
         public MainViewModel()
         {
-            OnCounterClickedCommand = new AsyncRelayCommand<string>(OnCounterClicked);
+            OnCounterClickedCommand = new RelayCommand<object>(OnCounterClicked);
         }
-        public IAsyncRelayCommand<string> OnCounterClickedCommand { get; }
+        public IRelayCommand<string> OnCounterClickedCommand { get; }
 
-        private async Task OnCounterClicked(string? test)
+        private void OnCounterClicked(object @object)
         {
             CounterText = $"Clicked {++count} time{(count == 1 ? "" : "s")}";
         }
