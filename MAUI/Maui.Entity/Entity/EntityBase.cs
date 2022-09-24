@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
 namespace Maui.Entity.Entity
 {
-    public class EntityBase
+    public class EntityBase: INotifyPropertyChanged
     {
         public EntityBase()
         {
@@ -16,6 +18,13 @@ namespace Maui.Entity.Entity
         public string Mensagem { get; set; }
         [NotMapped]
         public List<EntityBase> Notificacoes { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        internal void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         public bool ValidateEmail(string email)
         {
 

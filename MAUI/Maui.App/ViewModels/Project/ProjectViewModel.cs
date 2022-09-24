@@ -1,22 +1,38 @@
-﻿using Maui.App.Service.Dialog;
+﻿using CommunityToolkit.Mvvm.Input;
+using Maui.App.Service.Dialog;
 using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
 using Maui.App.ViewModels.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Maui.Entity.Entity;
 
 namespace Maui.App.ViewModels.Project
 {
     public class ProjectViewModel : ViewModelBase
     {
+
+        private readonly ProjectModel _project;
+
+        public ProjectModel Project
+        {
+            get => _project;
+            set => SetProperty(ref value, _project);
+        }
+
         public ProjectViewModel(IDialogService dialogService,
                                 INavigationService navigationService,
                                 ISettingsService settingsService) : base(dialogService, navigationService, settingsService)
         {
-        
+            _dialogService = dialogService;
+            CreateCommand = new AsyncRelayCommand<object>(Create);
         }
+
+        private async Task Create(object obj)
+        {
+            await _dialogService.ShowAlertAsync("oi", "oi", "oi");
+        }
+
+        private readonly IDialogService _dialogService;
+
+        public IAsyncRelayCommand<object> CreateCommand { get; }
     }
 }

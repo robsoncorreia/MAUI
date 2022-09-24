@@ -4,12 +4,30 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Maui.App.ViewModels.Project"
-    x:DataType="local:ProjectViewModel"
-    Title="ProjectView">
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="ProjectView"
+    x:DataType="local:ProjectViewModel">
     <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
+        <Grid>
+            <Label
+                HorizontalOptions="Center"
+                Text="Welcome to .NET MAUI!"
+                VerticalOptions="Center" />
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CreateCommand}" NumberOfTapsRequired="1" />
+
+            </Grid.GestureRecognizers>
+
+        </Grid>
+        <Entry IsPassword="True" Text="{Binding Project.Name, Mode=TwoWay}">
+            <Entry.Behaviors>
+                <toolkit:EventToCommandBehavior Command="{Binding CreateCommand}" EventName="TextChanged" />
+            </Entry.Behaviors>
+        </Entry>
+        <Button>
+            <Button.Behaviors>
+                <toolkit:EventToCommandBehavior Command="{Binding CreateCommand}" EventName="Clicked" />
+            </Button.Behaviors>
+        </Button>
     </VerticalStackLayout>
 </ContentPage>

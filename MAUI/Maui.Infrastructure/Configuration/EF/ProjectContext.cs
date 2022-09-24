@@ -9,6 +9,6 @@ namespace Maui.Infrastructure.Configuration.EF
         {
         }
 
-        public DbSet<Project> Project { get; set; }
+        public DbSet<ProjectModel> Project { get; set; }
     }
 }

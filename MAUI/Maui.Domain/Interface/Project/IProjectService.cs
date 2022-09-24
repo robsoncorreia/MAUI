@@ -2,7 +2,7 @@
 
 namespace Maui.Domain.Interface.Project
 {
-    public interface IProjectService : IGenericService<Entity.Entity.Project>
+    public interface IProjectService : IGenericService<Entity.Entity.ProjectModel>
     {
     }
 }
