@@ -1,4 +1,5 @@
 ﻿using Maui.App.Service.Navigation;
+using Maui.App.Views.Login;
 using Maui.App.Views.Project;
 
 namespace Maui.App
@@ -28,6 +29,7 @@ namespace Maui.App
         private static void InitializeRouting()
         {
             Routing.RegisterRoute("Project", typeof(ProjectView));
+            Routing.RegisterRoute("Login", typeof(LoginView));
         }
     }
 }

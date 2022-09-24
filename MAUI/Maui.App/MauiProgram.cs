@@ -3,6 +3,7 @@ using Maui.App.Service.Dialog;
 using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
 using Maui.App.ViewModels.Project;
+using Maui.App.Views.Login;
 using Maui.App.Views.Project;
 using Maui.Domain.Interface.Project;
 using Maui.Domain.Service;
@@ -39,6 +40,7 @@ namespace Maui.App
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddTransient<ProjectView>();
+            mauiAppBuilder.Services.AddTransient<LoginView>();
             return mauiAppBuilder;
         }
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
