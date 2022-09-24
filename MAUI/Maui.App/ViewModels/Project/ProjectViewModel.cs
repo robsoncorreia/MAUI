@@ -10,12 +10,12 @@ namespace Maui.App.ViewModels.Project
     public class ProjectViewModel : ViewModelBase
     {
 
-        private readonly ProjectModel _project;
+        private  ProjectModel _project;
 
         public ProjectModel Project
         {
             get => _project;
-            set => SetProperty(ref value, _project);
+            set => SetProperty(ref _project, value );
         }
 
         public ProjectViewModel(IDialogService dialogService,
@@ -23,6 +23,7 @@ namespace Maui.App.ViewModels.Project
                                 ISettingsService settingsService) : base(dialogService, navigationService, settingsService)
         {
             _dialogService = dialogService;
+            Project = new ProjectModel();
             CreateCommand = new AsyncRelayCommand<object>(Create);
         }
 
