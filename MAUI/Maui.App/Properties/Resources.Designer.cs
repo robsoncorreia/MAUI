@@ -88,6 +88,15 @@ namespace Maui.App.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Go to project.
+        /// </summary>
+        public static string Go_to_project {
+            get {
+                return ResourceManager.GetString("Go to project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Hello, World!.
         /// </summary>
         public static string Hello__World_ {

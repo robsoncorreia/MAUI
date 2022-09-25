@@ -19,7 +19,7 @@ namespace Maui.App.Service.Navigation
         public Task InitializeAsync() =>
             NavigateToAsync(
                 string.IsNullOrEmpty(_settingsService.AuthAccessToken)
-                    ? "//Login"
+                    ? "Login"
                     : "//Main/Catalog");
 
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)

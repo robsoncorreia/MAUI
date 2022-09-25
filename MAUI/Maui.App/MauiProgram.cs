@@ -2,6 +2,7 @@
 using Maui.App.Service.Dialog;
 using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
+using Maui.App.ViewModels.Login;
 using Maui.App.ViewModels.Project;
 using Maui.App.Views.Login;
 using Maui.App.Views.Project;
@@ -46,6 +47,7 @@ namespace Maui.App
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
             mauiAppBuilder.Services.AddSingleton<ProjectViewModel>();
+            mauiAppBuilder.Services.AddSingleton<LoginViewModel>();
 
             return mauiAppBuilder;
         }
