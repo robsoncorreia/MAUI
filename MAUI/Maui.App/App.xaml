@@ -3,9 +3,14 @@
     x:Class="Maui.App.App"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converters="clr-namespace:Maui.App.Converters"
     xmlns:local="clr-namespace:Maui.App">
     <Application.Resources>
         <ResourceDictionary>
+            <!--#region Converters-->
+            <converters:FirstValidationErrorConverter x:Key="firstValidationErrorConverter" />
+            <!--#endregion Converters-->
+
             <!--  COLORS  -->
             <Color x:Key="WhiteColor">#ffffff</Color>
             <Color x:Key="BlackColor">#000000</Color>
@@ -88,7 +93,7 @@
                 <On Platform="Android" Value="None" />
             </OnPlatform>
 
-            <!--#region FONTS -->
+            <!--#region FONTS-->
             <x:String x:Key="MontserratRegular">Montserrat-Regular</x:String>
             <x:String x:Key="MontserratBold">Montserrat-Bold</x:String>
             <x:String x:Key="SourceSansProRegular">SourceSansPro-Regular</x:String>
@@ -103,8 +108,13 @@
                 <On Platform="WinUI" Value="Assets/Fonts/Font_Awesome_5_Free-Solid-900.otf#Font Awesome 5 Free" />
             </OnPlatform>
             <!--#endregion FONTS-->
-            
+
             <!--#region EXPLICIT STYLES-->
+            <Style x:Key="ValidationErrorLabelStyle" TargetType="{x:Type Label}">
+                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                <Setter Property="FontSize" Value="{StaticResource LittleSize}" />
+            </Style>
+
             <Style x:Key="EntryStyle" TargetType="{x:Type Entry}">
                 <Setter Property="FontFamily" Value="{StaticResource MontserratRegular}" />
                 <Setter Property="FontSize" Value="{StaticResource LargeSize}" />

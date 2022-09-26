@@ -36,6 +36,7 @@
                 </DataTrigger>
             </Entry.Triggers>
         </Entry>
+        <Label Style="{StaticResource ValidationErrorLabelStyle}" Text="{Binding Email.Errors, Converter={StaticResource firstValidationErrorConverter}}" />
         <Button Command="{Binding GoToProjectCommand}" Text="{x:Static p:Resources.Go_to_project}">
             <Button.Triggers>
                 <DataTrigger
