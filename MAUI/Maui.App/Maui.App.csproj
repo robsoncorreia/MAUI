@@ -76,11 +76,13 @@
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Maui" Version="1.3.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Maui.Application\Maui.Applications.csproj" />
 	  <ProjectReference Include="..\Maui.Domain\Maui.Domain.csproj" />
+	  <ProjectReference Include="..\Maui.Infrastructure\Maui.Infrastructure.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

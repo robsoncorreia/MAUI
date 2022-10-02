@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Maui.Entity\Maui.Entity.csproj" />
+    <ProjectReference Include="..\Maui.Infrastructure\Maui.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

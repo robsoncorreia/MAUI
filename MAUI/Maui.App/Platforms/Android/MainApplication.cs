@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace Maui.App
+namespace Maui.App.Platforms.Android
 {
     [Application]
     public class MainApplication : MauiApplication
@@ -11,6 +11,9 @@ namespace Maui.App
         {
         }
 
-        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        protected override MauiApp CreateMauiApp()
+        {
+            return MauiProgram.CreateMauiApp();
+        }
     }
 }

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Maui.App.Service.Settings
+﻿namespace Maui.App.Service.Settings
 {
-    public class SettingsService: ISettingsService
+    public class SettingsService : ISettingsService
     {
         #region Setting Constants
 
@@ -29,7 +23,7 @@ namespace Maui.App.Service.Settings
         private readonly double FakeLongitudeDefault = -122.315752d;
         //todo to implement
         private readonly string UrlIdentityDefault = "";//GlobalSetting.Instance.BaseIdentityEndpoint;
-        private readonly string UrlGatewayMarketingDefault ="";// GlobalSetting.Instance.BaseGatewayMarketingEndpoint;
+        private readonly string UrlGatewayMarketingDefault = "";// GlobalSetting.Instance.BaseGatewayMarketingEndpoint;
         private readonly string UrlGatewayShoppingDefault = ""; //GlobalSetting.Instance.BaseGatewayShoppingEndpoint;
         #endregion
 

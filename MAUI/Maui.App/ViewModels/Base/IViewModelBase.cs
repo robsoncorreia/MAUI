@@ -1,10 +1,26 @@
-﻿using Maui.App.Service.Settings;
+﻿using Maui.App.Service.Navigation;
+
+/* Alteração não mesclada do projeto 'Maui.App (net6.0-ios)'
+Antes:
 using Maui.App.Service.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+Após:
+using Maui.App.Service.Settings;
+*/
+
+/* Alteração não mesclada do projeto 'Maui.App (net6.0-maccatalyst)'
+Antes:
+using Maui.App.Service.Navigation;
+Após:
+using Maui.App.Service.Settings;
+*/
+
+/* Alteração não mesclada do projeto 'Maui.App (net6.0-windows10.0.19041.0)'
+Antes:
+using Maui.App.Service.Navigation;
+Após:
+using Maui.App.Service.Settings;
+*/
+using Maui.App.Service.Settings;
 
 namespace Maui.App.ViewModels.Base
 {

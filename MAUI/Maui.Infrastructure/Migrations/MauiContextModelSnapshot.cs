@@ -3,18 +3,16 @@ using Maui.Infrastructure.Configuration.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace Maui.Infrastructure.Migrations
 {
-    [DbContext(typeof(ProjectContext))]
-    [Migration("20220922095459_init")]
-    partial class init
+    [DbContext(typeof(MauiContext))]
+    partial class MauiContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,7 +21,7 @@ namespace Maui.Infrastructure.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Maui.Entity.Entity.Project", b =>
+            modelBuilder.Entity("Maui.Entity.Entity.ProjectModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

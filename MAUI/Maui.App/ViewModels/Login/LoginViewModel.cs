@@ -24,7 +24,10 @@ namespace Maui.App.ViewModels.Login
             AddValidations();
         }
 
-        private bool Validate() => Email.Validate();
+        private bool Validate()
+        {
+            return Email.Validate();
+        }
 
         private void AddValidations()
         {

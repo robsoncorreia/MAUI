@@ -10,4 +10,8 @@
     <Compile Remove="Class1.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Maui.Domain\Maui.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

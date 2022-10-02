@@ -40,8 +40,8 @@ namespace Maui.App.ViewModels.Base
             SettingsService = settingsService;
 
             //GlobalSetting.Instance.BaseIdentityEndpoint = SettingsService.IdentityEndpointBase;
-           // GlobalSetting.Instance.BaseGatewayShoppingEndpoint = SettingsService.GatewayShoppingEndpointBase;
-           // GlobalSetting.Instance.BaseGatewayMarketingEndpoint = SettingsService.GatewayMarketingEndpointBase;
+            // GlobalSetting.Instance.BaseGatewayShoppingEndpoint = SettingsService.GatewayShoppingEndpointBase;
+            // GlobalSetting.Instance.BaseGatewayMarketingEndpoint = SettingsService.GatewayMarketingEndpointBase;
         }
 
         public virtual void ApplyQueryAttributes(IDictionary<string, object> query)
@@ -66,7 +66,7 @@ namespace Maui.App.ViewModels.Base
             finally
             {
                 IsBusy = false;
-                _isBusyLock.Release();
+                _ = _isBusyLock.Release();
             }
         }
 

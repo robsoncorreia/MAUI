@@ -12,11 +12,7 @@ namespace Maui.App.Validations
             {
                 return false;
             }
-            if (!_regex.IsMatch(str))
-            {
-                return false;
-            }
-            return true;
+            return _regex.IsMatch(str);
         }
     }
 }

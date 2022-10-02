@@ -4,9 +4,9 @@ namespace Maui.App.Views.Project;
 
 public partial class ProjectView : ContentPage
 {
-	public ProjectView(ProjectViewModel viewModel)
-	{
-		BindingContext = viewModel;
-		InitializeComponent();
-	}
+    public ProjectView(ProjectViewModel viewModel)
+    {
+        BindingContext = viewModel;
+        InitializeComponent();
+    }
 }

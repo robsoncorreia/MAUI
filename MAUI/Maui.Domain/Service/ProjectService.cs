@@ -1,41 +1,41 @@
 ﻿using Maui.Domain.Interface.Project;
 using Maui.Entity.Entity;
+using Maui.Infrastructure.Repository.Interface;
 
 namespace Maui.Domain.Service
 {
     public class ProjectService : IProjectService
     {
+        private readonly IProjectRepository _projectRepository;
 
-        private readonly IProjectService _iprojectService;
-
-        public ProjectService(IProjectService iprojectService)
+        public ProjectService(IProjectRepository projectService)
         {
-            _iprojectService = iprojectService;
+            _projectRepository = projectService;
         }
 
         public async Task Add(ProjectModel project)
         {
-           await _iprojectService.Add(project);
+            await _projectRepository.Add(project);
         }
 
         public async Task Delete(ProjectModel project)
         {
-            await _iprojectService.Delete(project);
+            await _projectRepository.Delete(project);
         }
 
         public async Task<ProjectModel> FindById(int id)
         {
-            return await _iprojectService.FindById(id);
+            return await _projectRepository.FindById(id);
         }
 
         public async Task<List<ProjectModel>> List()
         {
-            return await _iprojectService.List();
+            return await _projectRepository.List();
         }
 
         public async Task Update(ProjectModel project)
         {
-            await _iprojectService.Update(project);
+            await _projectRepository.Update(project);
         }
     }
 }

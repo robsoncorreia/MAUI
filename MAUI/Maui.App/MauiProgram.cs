@@ -6,8 +6,12 @@ using Maui.App.ViewModels.Login;
 using Maui.App.ViewModels.Project;
 using Maui.App.Views.Login;
 using Maui.App.Views.Project;
+using Maui.Applications.Applications;
+using Maui.Applications.Interface;
 using Maui.Domain.Interface.Project;
 using Maui.Domain.Service;
+using Maui.Infrastructure.Repository;
+using Maui.Infrastructure.Repository.Interface;
 
 namespace Maui.App
 {
@@ -16,13 +20,13 @@ namespace Maui.App
         public static MauiApp CreateMauiApp()
         {
             MauiAppBuilder builder = MauiApp.CreateBuilder();
-            builder
+            _ = builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    _ = fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                    _ = fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
                .RegisterViewModels()
                .RegisterViews()
@@ -30,24 +34,35 @@ namespace Maui.App
 
             return builder.Build();
         }
+
         public static MauiAppBuilder RegisterAppServices(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddSingleton<IProjectService, ProjectService>();
-            mauiAppBuilder.Services.AddSingleton<ISettingsService, SettingsService>();
-            mauiAppBuilder.Services.AddSingleton<IDialogService, DialogService>();
-            mauiAppBuilder.Services.AddSingleton<INavigationService, NavigateService>();
+            _ = mauiAppBuilder.Services.AddSingleton<ISettingsService, SettingsService>();
+            _ = mauiAppBuilder.Services.AddSingleton<IDialogService, DialogService>();
+            _ = mauiAppBuilder.Services.AddSingleton<INavigationService, NavigateService>();
+
+            #region Project
+
+            _ = mauiAppBuilder.Services.AddSingleton<IProjectApplication, ProjectApplication>();
+            _ = mauiAppBuilder.Services.AddSingleton<IProjectService, ProjectService>();
+            _ = mauiAppBuilder.Services.AddSingleton<IProjectRepository, ProjectRepository>();
+
+            #endregion Project
+
             return mauiAppBuilder;
         }
+
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddTransient<ProjectView>();
-            mauiAppBuilder.Services.AddTransient<LoginView>();
+            _ = mauiAppBuilder.Services.AddTransient<ProjectView>();
+            _ = mauiAppBuilder.Services.AddTransient<LoginView>();
             return mauiAppBuilder;
         }
+
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
-            mauiAppBuilder.Services.AddSingleton<ProjectViewModel>();
-            mauiAppBuilder.Services.AddSingleton<LoginViewModel>();
+            _ = mauiAppBuilder.Services.AddSingleton<ProjectViewModel>();
+            _ = mauiAppBuilder.Services.AddSingleton<LoginViewModel>();
 
             return mauiAppBuilder;
         }
