@@ -120,17 +120,38 @@
   <data name="Click Me" xml:space="preserve">
     <value>Click Me</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>Closed</value>
+  </data>
   <data name="Counts the number of times you click" xml:space="preserve">
     <value>Counts the number of times you click</value>
   </data>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
   <data name="Cute dot net bot waving hi to you!" xml:space="preserve">
     <value>Cute dot net bot waving hi to you!</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
   </data>
   <data name="Go to project" xml:space="preserve">
     <value>Go to project</value>
   </data>
   <data name="Hello, World!" xml:space="preserve">
     <value>Hello, World!</value>
+  </data>
+  <data name="Project created successfully" xml:space="preserve">
+    <value>Project created successfully</value>
+  </data>
+  <data name="Project name" xml:space="preserve">
+    <value>Project name</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="Welcome to .NET Multi-platform App UI" xml:space="preserve">
     <value>Welcome to .NET Multi-platform App UI</value>

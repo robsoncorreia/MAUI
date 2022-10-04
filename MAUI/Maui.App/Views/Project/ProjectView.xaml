@@ -4,25 +4,32 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Maui.App.ViewModels.Project"
+    xmlns:p="clr-namespace:Maui.App.Properties"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="ProjectView"
     x:DataType="local:ProjectViewModel">
-    <VerticalStackLayout>
-        <Grid>
-            <Label
-                HorizontalOptions="Center"
-                Text="{Binding Project.Name, Mode=OneWay}"
-                VerticalOptions="Center" />
-            <Grid.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding CreateCommand}" NumberOfTapsRequired="1" />
-            </Grid.GestureRecognizers>
-        </Grid>
-        <Entry IsPassword="True" Text="{Binding Project.Name, Mode=TwoWay}">
-            <Entry.Behaviors>
-                <toolkit:EventToCommandBehavior Command="{Binding CreateCommand}" EventName="TextChanged" />
-            </Entry.Behaviors>
-        </Entry>
-        <Button Text="{Binding Project.Name, Mode=OneWay}">
+    <VerticalStackLayout Padding="8" Spacing="8">
+
+        <Label
+            HorizontalOptions="Center"
+            Text="{x:Static p:Resources.Project_name}"
+            VerticalOptions="Center" />
+        <Entry Placeholder="{x:Static p:Resources.Project_name}" Text="{Binding Project.Name, Mode=TwoWay}" />
+        <Button Text="{x:Static p:Resources.Create}">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsBusy}"
+                            TargetType="{x:Type Button}"
+                            Value="True">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                    <Setter Property="IsEnabled" Value="True" />
+                </Style>
+            </Button.Style>
+
             <Button.Behaviors>
                 <toolkit:EventToCommandBehavior Command="{Binding CreateCommand}" EventName="Clicked" />
             </Button.Behaviors>

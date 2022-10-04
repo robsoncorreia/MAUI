@@ -15,7 +15,7 @@ namespace Maui.App.Service.Navigation
         {
             return NavigateToAsync(
                 string.IsNullOrEmpty(_settingsService.AuthAccessToken)
-                    ? "Login"
+                    ? "//Project/Project"
                     : "//Main/Catalog");
         }
 

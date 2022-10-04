@@ -34,11 +34,19 @@ namespace Maui.App.ViewModels.Project
         {
             try
             {
+                IsBusy = true;
+
                 await _projectApplication.Add(Project);
-                await _dialogService.ShowAlertAsync("oi", "oi", "oi");
+
+                await _dialogService.ShowAlertAsync(Properties.Resources.Project_created_successfully, Properties.Resources.Success, Properties.Resources.Close);
             }
             catch (Exception ex)
             {
+                await _dialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 

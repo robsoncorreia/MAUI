@@ -28,7 +28,7 @@ namespace Maui.App.ViewModels.Base
         public bool IsBusy
         {
             get => _isBusy;
-            private set => SetProperty(ref _isBusy, value);
+            set => SetProperty(ref _isBusy, value);
         }
 
         public ViewModelBase(IDialogService dialogService,

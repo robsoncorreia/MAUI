@@ -12,37 +12,27 @@ namespace Maui.Infrastructure.Repository
 {
     public class ProjectRepository : GenericRepository<ProjectModel>, IProjectRepository
     {
+        private const string MediaType = "application/json";
+        private const string BASEURL = "https://localhost:7058/";
+        private const string PROJECTENDPOINT = "api/Project";
         private readonly HttpClient _client;
         private readonly JsonSerializerOptions _serializerOptions;
 
-        public async Task Add(ProjectModel project)
+        public new async Task Add(ProjectModel project)
         {
-            Uri uri = new Uri(string.Format("https://localhost:7058/api/Project", string.Empty));
+            Uri uri = new(string.Format($"{BASEURL}{PROJECTENDPOINT}", string.Empty));
 
-            try
+            string json = JsonSerializer.Serialize(project);
+
+            StringContent content = new(json, Encoding.UTF8, MediaType);
+
+            if (project.Id == 0)
             {
-                string json = JsonSerializer.Serialize<ProjectModel>(project);
-                StringContent content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                HttpResponseMessage response = null;
-
-                if (true/*isNewItem*/)
-                {
-                    response = await _client.PostAsync(uri, content);
-                }
-                else
-                {
-                    response = await _client.PutAsync(uri, content);
-                }
-
-                if (response.IsSuccessStatusCode)
-                {
-                    Debug.WriteLine(@"\tTodoItem successfully saved.");
-                }
+                _ = await _client.PostAsync(uri, content);
             }
-            catch (Exception ex)
+            else
             {
-                Debug.WriteLine(@"\tERROR {0}", ex.Message);
+                _ = await _client.PutAsync(uri, content);
             }
         }
 

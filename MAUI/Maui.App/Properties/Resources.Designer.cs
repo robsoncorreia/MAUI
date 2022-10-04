@@ -70,6 +70,24 @@ namespace Maui.App.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Closed.
+        /// </summary>
+        public static string Closed {
+            get {
+                return ResourceManager.GetString("Closed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Counts the number of times you click.
         /// </summary>
         public static string Counts_the_number_of_times_you_click {
@@ -79,11 +97,29 @@ namespace Maui.App.Properties {
         }
         
         /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Create.
+        /// </summary>
+        public static string Create {
+            get {
+                return ResourceManager.GetString("Create", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Consulta uma cadeia de caracteres localizada semelhante a Cute dot net bot waving hi to you!.
         /// </summary>
         public static string Cute_dot_net_bot_waving_hi_to_you_ {
             get {
                 return ResourceManager.GetString("Cute dot net bot waving hi to you!", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
@@ -102,6 +138,33 @@ namespace Maui.App.Properties {
         public static string Hello__World_ {
             get {
                 return ResourceManager.GetString("Hello, World!", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Project created successfully.
+        /// </summary>
+        public static string Project_created_successfully {
+            get {
+                return ResourceManager.GetString("Project created successfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Project name.
+        /// </summary>
+        public static string Project_name {
+            get {
+                return ResourceManager.GetString("Project name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Success.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
             }
         }
         
