@@ -23,7 +23,7 @@ namespace Maui.Infrastructure.Repository.Generic
 
         public IRequestProvider RequestProvider { get; }
 
-        public async Task Add(T objeto)
+        public virtual async Task Add(T objeto)
         {
             using MauiContext data = new(_dbContextOptions);
             _ = await data.Set<T>().AddAsync(objeto);
@@ -48,7 +48,7 @@ namespace Maui.Infrastructure.Repository.Generic
             return await data.Set<T>().FindAsync(id);
         }
 
-        public async Task<IEnumerable<T>> List()
+        public virtual async Task<IEnumerable<T>> List()
         {
             using MauiContext data = new(_dbContextOptions);
             return await data.Set<T>().AsNoTracking().ToListAsync();
