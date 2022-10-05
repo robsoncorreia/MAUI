@@ -1,15 +1,16 @@
 ﻿using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
 using System.Diagnostics;
-using System.Globalization;
 
 namespace Maui.App
 {
     public partial class App : Application
     {
         private readonly ISettingsService _settingsService;
+
         //private readonly IAppEnvironmentService _appEnvironmentService;
         private readonly INavigationService _navigationService;
+
         ///private readonly ILocationService _locationService;
         //private readonly ITheme _theme;
 
@@ -77,7 +78,7 @@ namespace Maui.App
             Dispatcher.Dispatch(() => SetStatusBar());
         }
 
-        void SetStatusBar()
+        private void SetStatusBar()
         {
             var nav = Current.MainPage as NavigationPage;
 
@@ -92,7 +93,7 @@ namespace Maui.App
             }
             else
             {
-               // _theme?.SetStatusBarColor(Colors.White, true);
+                // _theme?.SetStatusBarColor(Colors.White, true);
                 if (nav != null)
                 {
                     nav.BarBackgroundColor = Colors.White;

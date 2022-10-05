@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Maui.Infrastructure.Configuration.EF
+﻿namespace Maui.Infrastructure.Configuration.EF
 {
     internal static class UtilConfiguration
     {

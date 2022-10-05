@@ -6,8 +6,7 @@ using System.Net.Http.Headers;
 
 namespace Maui.Infrastructure.Repository.RequestProvider
 {
-
-    public class RequestProvider: IRequestProvider
+    public class RequestProvider : IRequestProvider
     {
         private readonly JsonSerializerSettings _serializerSettings;
 
@@ -173,5 +172,4 @@ namespace Maui.Infrastructure.Repository.RequestProvider
             }
         }
     }
-
 }

@@ -1,5 +1,4 @@
 ﻿using Maui.Infrastructure.Configuration.EF;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);

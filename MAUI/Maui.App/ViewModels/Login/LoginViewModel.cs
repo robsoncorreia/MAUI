@@ -9,7 +9,6 @@ namespace Maui.App.ViewModels.Login
 {
     public class LoginViewModel : ViewModelBase
     {
-
         public ValidatableObject<string> Email { get; private set; }
         public IRelayCommand ValidateCommand { get; private set; }
 
@@ -40,7 +39,6 @@ namespace Maui.App.ViewModels.Login
         }
 
         public IAsyncRelayCommand<object> GoToProjectCommand { get; }
-
 
         private readonly INavigationService _navigationService;
     }

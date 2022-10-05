@@ -1,7 +1,6 @@
 ﻿using Maui.Domain.Interface.Project;
 using Maui.Entity.Entity;
 using Maui.Infrastructure.Repository.Interface;
-using System.Linq.Expressions;
 
 namespace Maui.Domain.Service
 {
@@ -36,7 +35,7 @@ namespace Maui.Domain.Service
 
         public async Task<IEnumerable<ProjectModel>> ListExpression(Func<ProjectModel, bool> expression)
         {
-           return await _projectRepository.ListExpression(expression);
+            return await _projectRepository.ListExpression(expression);
         }
 
         public async Task Update(ProjectModel project)

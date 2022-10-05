@@ -16,6 +16,7 @@ namespace Maui.App
 
             InitializeComponent();
         }
+
         protected override async void OnHandlerChanged()
         {
             base.OnHandlerChanged();

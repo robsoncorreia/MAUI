@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Maui.Entity.Entity;
+using Maui.Infrastructure.Configuration.EF;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Maui.Entity.Entity;
-using Maui.Infrastructure.Configuration.EF;
 
 namespace Maui.WebApplication.Controllers
 {

@@ -1,7 +1,6 @@
 ﻿using Maui.Applications.Interface;
 using Maui.Domain.Interface.Project;
 using Maui.Entity.Entity;
-using System.Linq.Expressions;
 
 namespace Maui.Applications.Applications
 {
@@ -43,7 +42,5 @@ namespace Maui.Applications.Applications
         {
             await _projectService.Update(project);
         }
-
-
     }
 }

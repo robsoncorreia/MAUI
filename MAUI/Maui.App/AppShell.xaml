@@ -10,5 +10,4 @@
         Title="Home"
         ContentTemplate="{DataTemplate views:ProjectView}"
         Route="Project" />
-
 </Shell>

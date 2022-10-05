@@ -20,6 +20,7 @@ using Maui.App.Service.Navigation;
 Após:
 using Maui.App.Service.Settings;
 */
+
 using Maui.App.Service.Settings;
 
 namespace Maui.App.ViewModels.Base
@@ -28,6 +29,7 @@ namespace Maui.App.ViewModels.Base
     {
         //public IDialogService DialogService { get; }
         public INavigationService NavigationService { get; }
+
         public ISettingsService SettingsService { get; }
 
         public bool IsBusy { get; }

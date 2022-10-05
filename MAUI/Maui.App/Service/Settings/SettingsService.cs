@@ -21,11 +21,14 @@
         private readonly bool AllowGpsLocationDefault = false;
         private readonly double FakeLatitudeDefault = 47.604610d;
         private readonly double FakeLongitudeDefault = -122.315752d;
+
         //todo to implement
         private readonly string UrlIdentityDefault = "";//GlobalSetting.Instance.BaseIdentityEndpoint;
+
         private readonly string UrlGatewayMarketingDefault = "";// GlobalSetting.Instance.BaseGatewayMarketingEndpoint;
         private readonly string UrlGatewayShoppingDefault = ""; //GlobalSetting.Instance.BaseGatewayShoppingEndpoint;
-        #endregion
+
+        #endregion Setting Constants
 
         #region Settings Properties
 
@@ -89,6 +92,6 @@
             set => Preferences.Set(IdAllowGpsLocation, value);
         }
 
-        #endregion
+        #endregion Settings Properties
     }
 }
