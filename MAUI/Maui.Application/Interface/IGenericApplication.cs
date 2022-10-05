@@ -16,6 +16,6 @@ namespace Maui.Applications.Interface
 
         Task<T> FindById(int id);
 
-        Task<List<T>> List();
+        Task<IEnumerable<T>> List();
     }
 }

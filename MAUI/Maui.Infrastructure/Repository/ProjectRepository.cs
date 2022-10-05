@@ -2,8 +2,9 @@
 using Maui.Infrastructure.Configuration.EF;
 using Maui.Infrastructure.Repository.Generic;
 using Maui.Infrastructure.Repository.Interface;
+using Maui.Infrastructure.Repository.RequestProvider;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Text.Json;
@@ -17,6 +18,13 @@ namespace Maui.Infrastructure.Repository
         private const string PROJECTENDPOINT = "api/Project";
         private readonly HttpClient _client;
         private readonly JsonSerializerOptions _serializerOptions;
+
+        public new async Task<IEnumerable<ProjectModel>> List()
+        {
+            var projects = await _requestProvider.GetAsync<IEnumerable<ProjectModel>>($"{BASEURL}{PROJECTENDPOINT}", string.Empty).ConfigureAwait(false);
+
+            return projects ?? Enumerable.Empty<ProjectModel>();
+        }
 
         public new async Task Add(ProjectModel project)
         {
@@ -36,11 +44,11 @@ namespace Maui.Infrastructure.Repository
             }
         }
 
-        private readonly DbContextOptions<MauiContext> _dbContextOptions;
+        private readonly IRequestProvider _requestProvider;
 
-        public ProjectRepository()
+        public ProjectRepository(IRequestProvider request) : base(request)
         {
-            _dbContextOptions = new DbContextOptions<MauiContext>();
+            _requestProvider = request;
             _client = new HttpClient();
             _serializerOptions = new JsonSerializerOptions
             {
@@ -49,10 +57,11 @@ namespace Maui.Infrastructure.Repository
             };
         }
 
-        public async Task<List<ProjectModel>> ListarUsuarios(Expression<Func<ProjectModel, bool>> expression)
+        public async Task<IEnumerable<ProjectModel>> ListExpression(Func<ProjectModel, bool> expression)
         {
-            using MauiContext data = new(_dbContextOptions);
-            return await data.Project.Where(expression).AsNoTracking().ToListAsync();
+            var projects = await _requestProvider.GetAsync<IEnumerable<ProjectModel>>($"{BASEURL}{PROJECTENDPOINT}", string.Empty).ConfigureAwait(false);
+
+            return projects.Where(expression) ?? Enumerable.Empty<ProjectModel>();
         }
     }
 }

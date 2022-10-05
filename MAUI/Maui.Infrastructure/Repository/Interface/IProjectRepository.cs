@@ -6,6 +6,6 @@ namespace Maui.Infrastructure.Repository.Interface
 {
     public interface IProjectRepository : IGenericRepository<ProjectModel>
     {
-        Task<List<ProjectModel>> ListarUsuarios(Expression<Func<ProjectModel, bool>> expression);
+        Task<IEnumerable<ProjectModel>> ListExpression(Func<ProjectModel, bool> expression);
     }
 }

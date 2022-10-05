@@ -12,6 +12,7 @@ using Maui.Domain.Interface.Project;
 using Maui.Domain.Service;
 using Maui.Infrastructure.Repository;
 using Maui.Infrastructure.Repository.Interface;
+using Maui.Infrastructure.Repository.RequestProvider;
 
 namespace Maui.App
 {
@@ -40,6 +41,7 @@ namespace Maui.App
             _ = mauiAppBuilder.Services.AddSingleton<ISettingsService, SettingsService>();
             _ = mauiAppBuilder.Services.AddSingleton<IDialogService, DialogService>();
             _ = mauiAppBuilder.Services.AddSingleton<INavigationService, NavigateService>();
+            _ = mauiAppBuilder.Services.AddSingleton<IRequestProvider, RequestProvider>();
 
             #region Project
 
