@@ -1,5 +1,5 @@
 ﻿using Maui.Entity.Entity;
-using Maui.Infrastructure.Configuration.EF;
+using Maui.Infrastructure.Configuration.SqlServer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

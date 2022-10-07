@@ -2,9 +2,9 @@
 
 #nullable disable
 
-namespace Maui.Infrastructure.Migrations
+namespace Maui.WebApplication.Migrations
 {
-    public partial class init : Migration
+    public partial class mssqlcontainer_migration_304 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

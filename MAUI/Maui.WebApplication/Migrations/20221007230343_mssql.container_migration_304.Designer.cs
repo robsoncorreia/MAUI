@@ -3,16 +3,18 @@ using Maui.Infrastructure.Configuration.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Maui.Infrastructure.Migrations
+namespace Maui.WebApplication.Migrations
 {
     [DbContext(typeof(MauiContext))]
-    partial class MauiContextModelSnapshot : ModelSnapshot
+    [Migration("20221007230343_mssql.container_migration_304")]
+    partial class mssqlcontainer_migration_304
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

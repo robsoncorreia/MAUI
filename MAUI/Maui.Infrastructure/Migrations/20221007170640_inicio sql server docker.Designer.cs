@@ -3,6 +3,7 @@ using Maui.Infrastructure.Configuration.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maui.Infrastructure.Migrations
 {
     [DbContext(typeof(MauiContext))]
-    partial class MauiContextModelSnapshot : ModelSnapshot
+    [Migration("20221007170640_inicio sql server docker")]
+    partial class iniciosqlserverdocker
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Maui.Infrastructure.Migrations
+namespace Maui.WebApplication.Migrations
 {
     [DbContext(typeof(MauiContext))]
     partial class MauiContextModelSnapshot : ModelSnapshot
