@@ -4,7 +4,7 @@
 
 namespace Maui.WebApplication.Migrations
 {
-    public partial class mssqlcontainer_migration_665 : Migration
+    public partial class mssqlcontainer_migration_833 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

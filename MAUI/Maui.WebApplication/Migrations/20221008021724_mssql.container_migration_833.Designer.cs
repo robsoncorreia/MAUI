@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maui.WebApplication.Migrations
 {
     [DbContext(typeof(MauiContext))]
-    [Migration("20221008020019_mssql.container_migration_665")]
-    partial class mssqlcontainer_migration_665
+    [Migration("20221008021724_mssql.container_migration_833")]
+    partial class mssqlcontainer_migration_833
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
