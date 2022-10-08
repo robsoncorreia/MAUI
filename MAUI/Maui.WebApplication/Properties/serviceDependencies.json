@@ -1,9 +1,13 @@
 {
   "dependencies": {
     "mssql1": {
+      "ignored": "true",
       "type": "mssql",
-      "connectionId": "ConnectionStrings:MauiWebApplicationContext",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings:MauiWebApplication"
+    },
+    "mssql2": {
+      "type": "mssql",
+      "connectionId": "ConnectionStrings"
     }
   }
 }

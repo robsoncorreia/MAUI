@@ -1,13 +1,12 @@
 {
   "dependencies": {
-    "mssql1": {
+    "mssql2": {
       "containerPorts": "1433:1433",
       "secretStore": "LocalSecretsFile",
-      "containerName": "mssql",
+      "containerName": "sqlserver",
       "containerImage": "mcr.microsoft.com/mssql/server:2019-latest",
       "type": "mssql.container",
-      "connectionId": "ConnectionStrings:MauiWebApplicationContext",
-      "dynamicId": null
+      "connectionId": "ConnectionStrings"
     }
   }
 }

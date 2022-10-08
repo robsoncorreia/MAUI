@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="SQLSERVERCONNECTIONSTRING" xml:space="preserve">
-    <value>Server=localhost,1433;Database=MauiDb;User ID=RobsonCorreia;Password=Professor1010@;Persist Security Info=False;</value>
+    <value>Server=localhost,1433;Database=tempdb;User ID=sa;Password=ea54cb88-6036-4c94-b598-e2fdb53471ef;Persist Security Info=False;</value>
   </data>
 </root>
