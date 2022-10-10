@@ -29,8 +29,9 @@ namespace Maui.App
 
         private static void InitializeRouting()
         {
-            Routing.RegisterRoute("Project", typeof(ProjectView));
+            Routing.RegisterRoute("CreateProject", typeof(CreateProjectView));
             Routing.RegisterRoute("Login", typeof(LoginView));
+            Routing.RegisterRoute("ProjectDetails", typeof(ProjectDetailsView));
         }
     }
 }

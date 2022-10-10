@@ -61,7 +61,7 @@ namespace Maui.Infrastructure.Properties {
         }
         
         /// <summary>
-        ///   Consulta uma cadeia de caracteres localizada semelhante a Server=localhost,1433;Database=master;User ID=sa;Password=ea54cb88-6036-4c94-b598-e2fdb53471ef;Persist Security Info=False;.
+        ///   Consulta uma cadeia de caracteres localizada semelhante a Server=localhost,1433;Database=Maui;User ID=sa;Password=Professor1010@;Persist Security Info=False;.
         /// </summary>
         public static string SQLSERVERCONNECTIONSTRING {
             get {

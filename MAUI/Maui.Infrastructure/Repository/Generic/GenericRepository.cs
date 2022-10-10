@@ -1,7 +1,6 @@
 ﻿using Maui.Infrastructure.Configuration.SqlServer;
 using Maui.Infrastructure.Repository.RequestProvider;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Expressions;
 
 namespace Maui.Infrastructure.Repository.Generic
 {

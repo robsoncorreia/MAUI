@@ -2,9 +2,9 @@ using Maui.App.ViewModels.Project;
 
 namespace Maui.App.Views.Project;
 
-public partial class ProjectView : ContentPage
+public partial class CreateProjectView : ContentPage
 {
-    public ProjectView(ProjectViewModel viewModel)
+    public CreateProjectView(CreateProjectViewModel viewModel)
     {
         BindingContext = viewModel;
         InitializeComponent();

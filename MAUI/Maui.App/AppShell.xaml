@@ -8,6 +8,6 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate views:ProjectView}"
+        ContentTemplate="{DataTemplate views:CreateProjectView}"
         Route="Project" />
 </Shell>

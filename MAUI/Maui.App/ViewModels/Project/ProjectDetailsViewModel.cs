@@ -8,7 +8,7 @@ using Maui.Entity.Entity;
 
 namespace Maui.App.ViewModels.Project
 {
-    public class ProjectViewModel : ViewModelBase
+    public class ProjectDetailsViewModel : ViewModelBase
     {
         private ProjectModel _project;
         private readonly IProjectApplication _projectApplication;
@@ -19,12 +19,11 @@ namespace Maui.App.ViewModels.Project
             set => SetProperty(ref _project, value);
         }
 
-        public ProjectViewModel(IDialogService dialogService,
+        public ProjectDetailsViewModel(IDialogService dialogService,
                                 INavigationService navigationService,
                                 ISettingsService settingsService,
                                 IProjectApplication projectApplication) : base(dialogService, navigationService, settingsService)
         {
-            _dialogService = dialogService;
             Project = new ProjectModel();
             CreateCommand = new AsyncRelayCommand<object>(Create);
             _projectApplication = projectApplication;
@@ -40,19 +39,17 @@ namespace Maui.App.ViewModels.Project
                 await _projectApplication.List();
                 await _projectApplication.ListExpression(x => x.Id != 0);
 
-                await _dialogService.ShowAlertAsync(Properties.Resources.Project_created_successfully, Properties.Resources.Success, Properties.Resources.Close);
+                await DialogService.ShowAlertAsync(Properties.Resources.Project_created_successfully, Properties.Resources.Success, Properties.Resources.Close);
             }
             catch (Exception ex)
             {
-                await _dialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);
+                await DialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);
             }
             finally
             {
                 IsBusy = false;
             }
         }
-
-        private readonly IDialogService _dialogService;
 
         public IAsyncRelayCommand<object> CreateCommand { get; }
     }

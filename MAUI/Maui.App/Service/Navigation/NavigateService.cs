@@ -15,17 +15,25 @@ namespace Maui.App.Service.Navigation
         {
             return NavigateToAsync(
                 string.IsNullOrEmpty(_settingsService.AuthAccessToken)
-                    ? "//Project/Project"
+                    ? "//Project"
                     : "//Main/Catalog");
         }
 
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)
         {
-            ShellNavigationState shellNavigation = new(route);
+            try
+            {
+                ShellNavigationState shellNavigation = new(route);
 
-            return routeParameters != null
-                ? Shell.Current.GoToAsync(shellNavigation, routeParameters)
-                : Shell.Current.GoToAsync(shellNavigation);
+                return routeParameters != null
+                    ? Shell.Current.GoToAsync(shellNavigation, routeParameters)
+                    : Shell.Current.GoToAsync(shellNavigation);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return Shell.Current.GoToAsync("..");
+            }
         }
 
         public Task PopAsync()

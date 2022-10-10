@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="Maui.App.Views.Project.ProjectView"
+    x:Class="Maui.App.Views.Project.CreateProjectView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Maui.App.ViewModels.Project"
     xmlns:p="clr-namespace:Maui.App.Properties"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="ProjectView"
-    x:DataType="local:ProjectViewModel">
+    x:DataType="local:CreateProjectViewModel">
     <VerticalStackLayout Padding="8" Spacing="8">
 
         <Label
