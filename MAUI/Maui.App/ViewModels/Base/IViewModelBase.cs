@@ -35,7 +35,5 @@ namespace Maui.App.ViewModels.Base
         public bool IsBusy { get; }
 
         public bool IsInitialized { get; set; }
-
-        Task InitializeAsync();
     }
 }

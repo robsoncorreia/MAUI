@@ -9,8 +9,12 @@ namespace Maui.App.ViewModels.Base
     {
         private readonly SemaphoreSlim _isBusyLock = new(1, 1);
 
-        private bool _isInitialized;
-        private bool _isBusy;
+        [ObservableProperty]
+        private bool isInitialized;
+
+        [ObservableProperty]
+        private bool isBusy;
+
         private bool _disposedValue;
 
         public IDialogService DialogService { get; private set; }
@@ -19,17 +23,6 @@ namespace Maui.App.ViewModels.Base
 
         public ISettingsService SettingsService { get; private set; }
 
-        public bool IsInitialized
-        {
-            get => _isInitialized;
-            set => SetProperty(ref _isInitialized, value);
-        }
-
-        public bool IsBusy
-        {
-            get => _isBusy;
-            set => SetProperty(ref _isBusy, value);
-        }
 
         public ViewModelBase(IDialogService dialogService,
                              INavigationService navigationService,
@@ -38,15 +31,8 @@ namespace Maui.App.ViewModels.Base
             DialogService = dialogService;
             NavigationService = navigationService;
             SettingsService = settingsService;
-
-            //GlobalSetting.Instance.BaseIdentityEndpoint = SettingsService.IdentityEndpointBase;
-            // GlobalSetting.Instance.BaseGatewayShoppingEndpoint = SettingsService.GatewayShoppingEndpointBase;
-            // GlobalSetting.Instance.BaseGatewayMarketingEndpoint = SettingsService.GatewayMarketingEndpointBase;
         }
 
-        public virtual void ApplyQueryAttributes(IDictionary<string, object> query)
-        {
-        }
 
         public virtual Task InitializeAsync()
         {
@@ -85,9 +71,12 @@ namespace Maui.App.ViewModels.Base
 
         public void Dispose()
         {
-            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
+        }
+
+        public void ApplyQueryAttributes(IDictionary<string, object> query)
+        {
         }
     }
 }

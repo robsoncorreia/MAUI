@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Maui.App.Service.Dialog;
 using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
@@ -7,25 +8,25 @@ using Maui.App.ViewModels.Base;
 
 namespace Maui.App.ViewModels.Login
 {
-    public class LoginViewModel : ViewModelBase
+    public partial class LoginViewModel : ViewModelBase
     {
-        public ValidatableObject<string> Email { get; private set; }
-        public IRelayCommand ValidateCommand { get; private set; }
+        [ObservableProperty]
+        private ValidatableObject<string> email;
 
         public LoginViewModel(IDialogService dialogService,
                               INavigationService navigationService,
                               ISettingsService settingsService) : base(dialogService, navigationService, settingsService)
         {
             Email = new ValidatableObject<string>();
-            ValidateCommand = new RelayCommand(() => Validate());
-            GoToProjectCommand = new AsyncRelayCommand<object>(GoToProject);
             _navigationService = navigationService;
             AddValidations();
         }
 
-        private bool Validate()
+
+        [RelayCommand]
+        public void Validate()
         {
-            return Email.Validate();
+            _ = Email.Validate();
         }
 
         private void AddValidations()
@@ -33,12 +34,12 @@ namespace Maui.App.ViewModels.Login
             Email.Validations.Add(new EmailRule<string> { ValidationMessage = "A email is required." });
         }
 
+        [RelayCommand]
         private async Task GoToProject(object arg)
         {
             await _navigationService.NavigateToAsync("//Project");
         }
 
-        public IAsyncRelayCommand<object> GoToProjectCommand { get; }
 
         private readonly INavigationService _navigationService;
     }

@@ -33,9 +33,6 @@ namespace Maui.App.ViewModels.Project
                 IsBusy = true;
 
                 await _projectApplication.Add(Project);
-                await _projectApplication.List();
-                await _projectApplication.ListExpression(x => x.Id != 0);
-                // await NavigationService.NavigateToAsync("//Project/ProjectDetails");
 
                 await DialogService.ShowAlertAsync(Properties.Resources.Project_created_successfully, Properties.Resources.Success, Properties.Resources.Close);
             }
