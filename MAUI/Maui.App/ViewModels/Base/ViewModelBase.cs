@@ -5,7 +5,7 @@ using Maui.App.Service.Settings;
 
 namespace Maui.App.ViewModels.Base
 {
-    public class ViewModelBase : ObservableObject, IViewModelBase, IDisposable
+    public partial class ViewModelBase : ObservableObject, IViewModelBase, IDisposable
     {
         private readonly SemaphoreSlim _isBusyLock = new(1, 1);
 
