@@ -36,7 +36,9 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
             HttpResponseMessage response = await httpClient.GetAsync(uri).ConfigureAwait(false);
 
-            await RequestProvider.HandleResponse(response).ConfigureAwait(false);
+            Validate(response);
+
+            await HandleResponse(response).ConfigureAwait(false);
 
             string serialized = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
@@ -51,19 +53,33 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
             if (!string.IsNullOrEmpty(header))
             {
-                RequestProvider.AddHeaderParameter(httpClient, header);
+                AddHeaderParameter(httpClient, header);
             }
 
-            StringContent content = new StringContent(JsonConvert.SerializeObject(data));
+            StringContent content = new(JsonConvert.SerializeObject(data));
+
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
             HttpResponseMessage response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
 
-            await RequestProvider.HandleResponse(response).ConfigureAwait(false);
+            Validate(response);
+
+            await HandleResponse(response).ConfigureAwait(false);
+
             string serialized = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             TResult result = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
 
             return result;
+        }
+
+        private static void Validate(HttpResponseMessage response)
+        {
+            object value = response.StatusCode switch
+            {
+                HttpStatusCode.InternalServerError => throw new Exception(response.Content.ToString()),
+                _ => string.Empty
+            };
         }
 
         public async Task<TResult> PostAsync<TResult>(string uri, string data, string clientId, string clientSecret)
@@ -72,14 +88,19 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
             if (!string.IsNullOrWhiteSpace(clientId) && !string.IsNullOrWhiteSpace(clientSecret))
             {
-                RequestProvider.AddBasicAuthenticationHeader(httpClient, clientId, clientSecret);
+                AddBasicAuthenticationHeader(httpClient, clientId, clientSecret);
             }
 
-            StringContent content = new StringContent(data);
+            StringContent content = new(data);
+
             content.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+
             HttpResponseMessage response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
 
-            await RequestProvider.HandleResponse(response).ConfigureAwait(false);
+            Validate(response);
+
+            await HandleResponse(response).ConfigureAwait(false);
+
             string serialized = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             TResult result = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
@@ -93,14 +114,19 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
             if (!string.IsNullOrEmpty(header))
             {
-                RequestProvider.AddHeaderParameter(httpClient, header);
+                AddHeaderParameter(httpClient, header);
             }
 
             StringContent content = new StringContent(JsonConvert.SerializeObject(data));
+
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
             HttpResponseMessage response = await httpClient.PutAsync(uri, content).ConfigureAwait(false);
 
-            await RequestProvider.HandleResponse(response).ConfigureAwait(false);
+            Validate(response);
+
+            await HandleResponse(response).ConfigureAwait(false);
+
             string serialized = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             TResult result = JsonConvert.DeserializeObject<TResult>(serialized, _serializerSettings);
@@ -111,6 +137,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
         public async Task DeleteAsync(string uri, string token = "")
         {
             HttpClient httpClient = GetOrCreateHttpClient(token);
+
             await httpClient.DeleteAsync(uri).ConfigureAwait(false);
         }
 
