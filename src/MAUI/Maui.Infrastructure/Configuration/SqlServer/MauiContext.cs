@@ -12,7 +12,7 @@ namespace Maui.Infrastructure.Configuration.SqlServer
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            _ = optionsBuilder.UseSqlServer(UriHelper.GetConfig(), b => b.MigrationsAssembly("Maui.WebApplication"));
+            _ = optionsBuilder.UseSqlServer(UriHelper.GetConfig());
         }
 
         public DbSet<ProjectModel>? Project { get; set; }
