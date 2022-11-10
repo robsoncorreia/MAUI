@@ -132,6 +132,9 @@
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="Create Project" xml:space="preserve">
+    <value>Create Project</value>
+  </data>
   <data name="Cute dot net bot waving hi to you!" xml:space="preserve">
     <value>Cute dot net bot waving hi to you!</value>
   </data>

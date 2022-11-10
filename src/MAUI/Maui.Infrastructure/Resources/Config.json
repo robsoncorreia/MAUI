@@ -1,6 +1,6 @@
 {
   "Data": {
     "baseURL": "https://localhost:7058/",
-    "connectionString": "Server=localhost,1433;Database=Maui;User ID=sa;Password=ea54cb88-6036-4c94-b598-e2fdb53471ef;Persist Security Info=False;"
+    "connectionString": "Server=localhost,1433;Database=Maui;User ID=sa;Password=ea54cb88-6036-4c94-b598-e2fdb53471ef;Persist Security Info=False;Encrypt=True;TrustServerCertificate=True;"
   }
 }
