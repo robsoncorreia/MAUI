@@ -1,11 +1,10 @@
 ﻿using Maui.Infrastructure.Configuration.SqlServer;
-using Maui.Infrastructure.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<MauiContext>(options =>
-    options.UseSqlServer(UriHelper.GetConfig() ?? throw new InvalidOperationException("Connection string 'MauiWebApplication' not found.")));
+    options.UseSqlServer(MauiContext.connectionString));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

@@ -1,8 +1,10 @@
 ﻿using Maui.Entity.Entity;
+using Maui.Infrastructure.Configuration.SqlServer;
 using Maui.Infrastructure.Helpers;
 using Maui.Infrastructure.Repository.Generic;
 using Maui.Infrastructure.Repository.Interface;
 using Maui.Infrastructure.Repository.RequestProvider;
+using Microsoft.Extensions.Configuration;
 
 namespace Maui.Infrastructure.Repository
 {
@@ -30,8 +32,9 @@ namespace Maui.Infrastructure.Repository
 
         public ProjectRepository(IRequestProvider requestProvider) : base(requestProvider)
         {
+            var config = new ConfigurationBuilder().AddUserSecrets<MauiContext>().Build();
+            baseURL = requestProvider.baseURL;
             _requestProvider = requestProvider;
-            baseURL = UriHelper.GetConfig(nameof(baseURL));
         }
 
         public async Task<IEnumerable<ProjectModel>> ListExpression(Func<ProjectModel, bool> expression)

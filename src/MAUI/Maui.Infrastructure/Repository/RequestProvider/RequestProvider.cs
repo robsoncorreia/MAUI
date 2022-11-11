@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using Maui.Infrastructure.Configuration.SqlServer;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using System.Net;
@@ -13,14 +15,20 @@ namespace Maui.Infrastructure.Repository.RequestProvider
         private readonly Lazy<HttpClient> _httpClient =
             new(() =>
             {
-                HttpClient httpClient = new HttpClient();
+                HttpClient httpClient = new();
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 return httpClient;
             },
                 LazyThreadSafetyMode.ExecutionAndPublication);
 
+        public string? baseURL { get; private set; }
+
         public RequestProvider()
         {
+            IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<MauiContext>().Build();
+
+            baseURL = config["Maui:BaseURL"];
+
             _serializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
@@ -75,7 +83,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
         private static void Validate(HttpResponseMessage response)
         {
-            object value = response.StatusCode switch
+            _ = response.StatusCode switch
             {
                 HttpStatusCode.InternalServerError => throw new Exception(response.Content.ToString()),
                 _ => string.Empty
@@ -117,7 +125,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
                 AddHeaderParameter(httpClient, header);
             }
 
-            StringContent content = new StringContent(JsonConvert.SerializeObject(data));
+            StringContent content = new(JsonConvert.SerializeObject(data));
 
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
@@ -138,7 +146,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
         {
             HttpClient httpClient = GetOrCreateHttpClient(token);
 
-            await httpClient.DeleteAsync(uri).ConfigureAwait(false);
+            _ = await httpClient.DeleteAsync(uri).ConfigureAwait(false);
         }
 
         private HttpClient GetOrCreateHttpClient(string token = "")
@@ -187,10 +195,10 @@ namespace Maui.Infrastructure.Repository.RequestProvider
         {
             if (!response.IsSuccessStatusCode)
             {
-                string content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                _ = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                if (response.StatusCode == HttpStatusCode.Forbidden ||
-                        response.StatusCode == HttpStatusCode.Unauthorized)
+                if (response.StatusCode is HttpStatusCode.Forbidden or
+                        HttpStatusCode.Unauthorized)
                 {
                     // throw new ServiceAuthenticationException(content);
                 }

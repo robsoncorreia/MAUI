@@ -59,15 +59,5 @@ namespace Maui.Infrastructure.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Config {
-            get {
-                object obj = ResourceManager.GetObject("Config", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

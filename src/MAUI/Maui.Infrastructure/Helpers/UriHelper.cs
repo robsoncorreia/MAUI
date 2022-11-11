@@ -5,8 +5,6 @@ namespace Maui.Infrastructure.Helpers
 {
     public class UriHelper
     {
-        private static JsonNode jsonNode = JsonNode.Parse(Encoding.Default.GetString(Properties.Resources.Config));
-
         public static string CombineUri(params string[] uriParts)
         {
             string uri = string.Empty;
@@ -21,6 +19,5 @@ namespace Maui.Infrastructure.Helpers
             }
             return uri;
         }
-        public static string GetConfig(string key = "connectionString") => (string)jsonNode!["Data"]![key];
     }
 }

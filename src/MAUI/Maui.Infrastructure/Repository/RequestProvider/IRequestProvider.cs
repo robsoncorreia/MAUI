@@ -2,6 +2,8 @@
 {
     public interface IRequestProvider
     {
+        string? baseURL { get; }
+
         Task<TResult> GetAsync<TResult>(string uri, string token = "");
 
         Task<TResult> PostAsync<TResult>(string uri, TResult data, string token = "", string header = "");
