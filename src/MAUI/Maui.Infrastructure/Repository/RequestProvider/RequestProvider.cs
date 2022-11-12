@@ -27,7 +27,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
         {
             IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<MauiContext>().Build();
 
-            baseURL = config["Maui:BaseURL"];
+            baseURL = config["BaseURL"];
 
             _serializerSettings = new JsonSerializerSettings
             {

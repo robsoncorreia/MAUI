@@ -57,6 +57,7 @@ namespace Maui.App
         public static MauiAppBuilder RegisterViews(this MauiAppBuilder mauiAppBuilder)
         {
             _ = mauiAppBuilder.Services.AddTransient<CreateProjectView>();
+            _ = mauiAppBuilder.Services.AddTransient<ListProjectView>();
             _ = mauiAppBuilder.Services.AddTransient<LoginView>();
             _ = mauiAppBuilder.Services.AddTransient<ProjectDetailsView>();
             return mauiAppBuilder;
@@ -65,6 +66,7 @@ namespace Maui.App
         public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder mauiAppBuilder)
         {
             _ = mauiAppBuilder.Services.AddSingleton<CreateProjectViewModel>();
+            _ = mauiAppBuilder.Services.AddSingleton<ListProjectViewModel>();
             _ = mauiAppBuilder.Services.AddSingleton<LoginViewModel>();
             _ = mauiAppBuilder.Services.AddSingleton<ProjectDetailsViewModel>();
 

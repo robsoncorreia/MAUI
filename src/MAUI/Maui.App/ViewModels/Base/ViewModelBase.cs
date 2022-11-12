@@ -10,6 +10,9 @@ namespace Maui.App.ViewModels.Base
         private readonly SemaphoreSlim _isBusyLock = new(1, 1);
 
         [ObservableProperty]
+        private double progress;
+
+        [ObservableProperty]
         private bool isInitialized;
 
         [ObservableProperty]

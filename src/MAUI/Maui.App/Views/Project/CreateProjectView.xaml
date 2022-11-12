@@ -8,7 +8,7 @@
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="{x:Static p:Resources.Create_Project}"
     x:DataType="local:CreateProjectViewModel">
-    <VerticalStackLayout Padding="8" Spacing="8">
+    <VerticalStackLayout Padding="8" Spacing="12">
         <VerticalStackLayout.Style>
             <Style TargetType="{x:Type VerticalStackLayout}">
                 <Style.Triggers>
@@ -27,21 +27,6 @@
             Text="{x:Static p:Resources.Project_name}"
             VerticalOptions="Center" />
         <Entry Placeholder="{x:Static p:Resources.Project_name}" Text="{Binding Project.Name, Mode=TwoWay}" />
-        <Button Command="{Binding CreateCommand}" Text="{x:Static p:Resources.Create}">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Style.Triggers>
-                        <DataTrigger
-                            Binding="{Binding IsBusy}"
-                            TargetType="{x:Type Button}"
-                            Value="True">
-                            <Setter Property="IsEnabled" Value="False" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                    <Setter Property="IsEnabled" Value="True" />
-                </Style>
-            </Button.Style>
-        </Button>
-        <ProgressBar IsVisible="{Binding IsBusy}" Progress=".4" />
+        <Button Command="{Binding CreateCommand}" Text="{x:Static p:Resources.Create}" />
     </VerticalStackLayout>
 </ContentPage>

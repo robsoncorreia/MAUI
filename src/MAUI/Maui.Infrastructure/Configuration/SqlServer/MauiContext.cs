@@ -16,7 +16,7 @@ namespace Maui.Infrastructure.Configuration.SqlServer
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             var config = new ConfigurationBuilder().AddUserSecrets<MauiContext>().Build();
-            connectionString = config["Maui:ConnectionString"];
+            connectionString = config["ConnectionString"];
             _ = optionsBuilder.UseSqlServer(connectionString);
         }
 

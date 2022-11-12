@@ -151,6 +151,15 @@ namespace Maui.App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List Project.
+        /// </summary>
+        public static string List_Project {
+            get {
+                return ResourceManager.GetString("List Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project created successfully.
         /// </summary>
         public static string Project_created_successfully {

@@ -147,6 +147,9 @@
   <data name="Hello, World!" xml:space="preserve">
     <value>Hello, World!</value>
   </data>
+  <data name="List Project" xml:space="preserve">
+    <value>List Project</value>
+  </data>
   <data name="Project created successfully" xml:space="preserve">
     <value>Project created successfully</value>
   </data>

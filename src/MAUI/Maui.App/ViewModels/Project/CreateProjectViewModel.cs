@@ -4,6 +4,7 @@ using Maui.App.Service.Dialog;
 using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
 using Maui.App.ViewModels.Base;
+using Maui.App.Views.Project;
 using Maui.Applications.Interface;
 using Maui.Entity.Entity;
 
@@ -13,6 +14,7 @@ namespace Maui.App.ViewModels.Project
     {
         [ObservableProperty]
         private ProjectModel project;
+
         private readonly IProjectApplication _projectApplication;
 
 
@@ -34,7 +36,13 @@ namespace Maui.App.ViewModels.Project
 
                 await _projectApplication.Add(Project);
 
+                Project = new ProjectModel();
+
+
+
                 await DialogService.ShowAlertAsync(Properties.Resources.Project_created_successfully, Properties.Resources.Success, Properties.Resources.Close);
+
+                await NavigationService.NavigateToAsync(nameof(ListProjectView));
             }
             catch (Exception ex)
             {

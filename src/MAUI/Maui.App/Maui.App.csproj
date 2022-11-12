@@ -85,7 +85,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="1.4.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="3.0.0" />
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
@@ -94,11 +94,15 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Maui.Application\Maui.Applications.csproj" />
 	  <ProjectReference Include="..\Maui.Domain\Maui.Domain.csproj" />
+	  <ProjectReference Include="..\Maui.Entity\Maui.Entity.csproj" />
 	  <ProjectReference Include="..\Maui.Infrastructure\Maui.Infrastructure.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\Login\LoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Project\ListProjectView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Project\ProjectDetailsView.xaml">

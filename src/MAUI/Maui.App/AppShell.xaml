@@ -6,8 +6,5 @@
     xmlns:views="clr-namespace:Maui.App.Views.Project"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate views:CreateProjectView}"
-        Route="Project" />
+    <ShellContent Title="Home" ContentTemplate="{DataTemplate views:CreateProjectView}" />
 </Shell>

@@ -13,10 +13,7 @@ namespace Maui.App.Service.Navigation
 
         public Task InitializeAsync()
         {
-            return NavigateToAsync(
-                string.IsNullOrEmpty(_settingsService.AuthAccessToken)
-                    ? "//Project"
-                    : "//Main/Catalog");
+            return NavigateToAsync("..");
         }
 
         public Task NavigateToAsync(string route, IDictionary<string, object> routeParameters = null)
