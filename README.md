@@ -22,45 +22,33 @@ docker pull mcr.microsoft.com/mssql/server
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 
-#### Lists available migrations
-
-```powershell
-dotnet ef migrations list
-```
-
-#### The following examples update the database to a specified migration. The first uses the migration name and the second uses the migration ID and a specified connection
-
-```powershell
-dotnet ef database update target_migration --connection your_connection_string
-```
-
 # Safe storage of app secrets in development in ASP.NET Core
 
-### The Secret Manager tool includes an init command. To use user secrets, run the following command in the project directory
+#### The Secret Manager tool includes an init command. To use user secrets, run the following command in the project directory
 
 ```powershell
 dotnet user-secrets init
 ```
 
-### Define an app secret consisting of a key and its value. The secret is associated with the project's UserSecretsId value. For example, run the following command from the directory in which the project file exists
+#### Define an app secret consisting of a key and its value. The secret is associated with the project's UserSecretsId value. For example, run the following command from the directory in which the project file exists
 
 ```powershell
 dotnet user-secrets set "Movies:ServiceApiKey" "12345"
 ```
 
-### List: Run the following command from the directory in which the project file exists
+#### List: Run the following command from the directory in which the project file exists
 
 ```powershell
 dotnet user-secrets list
 ```
 
-### Remove: Run the following command from the directory in which the project file exists
+#### Remove: Run the following command from the directory in which the project file exists
 
 ```powershell
 dotnet user-secrets remove "Movies:ConnectionString"
 ```
 
-### Remove All: Run the following command from the directory in which the project file exists
+#### Remove All: Run the following command from the directory in which the project file exists
 
 ```powershell
 dotnet user-secrets clear
@@ -68,13 +56,13 @@ dotnet user-secrets clear
 
 # Managing Secrets in .NET Console Apps
 
-### Install the UserSecrets Package
+#### Install the UserSecrets Package
 
 ```powershell
 dotnet add package Microsoft.Extensions.Configuration.UserSecrets
 ```
 
-### Access Secrets in Code
+#### Access Secrets in Code
 
 ```csharp
 using Microsoft.Extensions.Configuration;
@@ -90,13 +78,13 @@ string password = config["password"];
 
 ## Installing the tools
 
-### dotnet ef can be installed as either a global or local tool. Most developers prefer installing dotnet ef as a global tool using the following command
+#### dotnet ef can be installed as either a global or local tool. Most developers prefer installing dotnet ef as a global tool using the following command
 
 ```powershell
 dotnet tool install --global dotnet-ef
 ```
 
-### Before you can use the tools on a specific project, you'll need to add the Microsoft.EntityFrameworkCore.Design package to it
+#### Before you can use the tools on a specific project, you'll need to add the Microsoft.EntityFrameworkCore.Design package to it
 
 ```powershell
 dotnet add package Microsoft.EntityFrameworkCore.Design
@@ -108,14 +96,34 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet ef
 ```
 
+### Lists available migrations
+
+```powershell
+dotnet ef migrations list
+```
+
+#### The following examples update the database to a specified migration. The first uses the migration name and the second uses the migration ID and a specified connection
+
+```powershell
+dotnet ef database update target_migration --connection your_connection_string
+```
+
+## dotnet ef migrations add
+
+#### Adds a new migration
+
+```powershell
+dotnet ef migrations add <name>
+```
+
 ## dotnet ef database update
 
-### The following examples update the database to a specified migration. The first uses the migration name and the second uses the migration ID and a specified connection
+#### The following examples update the database to a specified migration. The first uses the migration name and the second uses the migration ID and a specified connection
 
 ```powershell
 dotnet ef database update InitialCreate
 ```
 
 ```powershell
-dotnet ef database update 20180904195021_InitialCreate --connection your_connection_string
+dotnet ef database update <migration name> --connection <connection>
 ```

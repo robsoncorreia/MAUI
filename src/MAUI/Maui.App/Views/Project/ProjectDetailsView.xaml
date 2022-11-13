@@ -26,6 +26,11 @@
             Text="{x:Static p:Resources.Project_name}"
             VerticalOptions="Center" />
         <Entry Placeholder="{x:Static p:Resources.Project_name}" Text="{Binding Project.Name, Mode=TwoWay}" />
+        <Label
+            HorizontalOptions="Center"
+            Text="{x:Static p:Resources.Description}"
+            VerticalOptions="Center" />
+        <Entry Placeholder="{x:Static p:Resources.Description}" Text="{Binding Project.Description, Mode=TwoWay}" />
         <Button Command="{Binding UpdateCommand}" Text="{x:Static p:Resources.Update}" />
     </VerticalStackLayout>
 </ContentPage>

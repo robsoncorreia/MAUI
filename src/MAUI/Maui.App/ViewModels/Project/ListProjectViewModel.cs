@@ -36,7 +36,25 @@ namespace Maui.App.ViewModels.Project
 
 
         [RelayCommand]
-        public async void Loaded(object obj)
+        public void NavigatedFrom(object obj)
+        {
+            ClearProjects();
+        }
+
+        private void ClearProjects()
+        {
+            Projects.Clear();
+        }
+
+        [RelayCommand]
+        public async void NavigatedTo(object obj)
+        {
+            await GetProjects();
+        }
+
+
+        [RelayCommand]
+        private async Task GetProjects()
         {
             Projects.Clear();
 
@@ -47,10 +65,10 @@ namespace Maui.App.ViewModels.Project
         }
 
         [RelayCommand]
-        public async void ItemSelected(object obj)
+        public async void ItemTapped(object obj)
         {
-            WeakReferenceMessenger.Default.Send(new SelectedProjectChangedMessage(SelectedItem));
             await NavigationService.NavigateToAsync(nameof(ProjectDetailsView));
+            _ = WeakReferenceMessenger.Default.Send(new SelectedProjectChangedMessage(SelectedItem));
         }
     }
 }
