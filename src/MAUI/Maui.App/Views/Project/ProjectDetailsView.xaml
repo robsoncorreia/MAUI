@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentView
+<ContentPage
     x:Class="Maui.App.Views.Project.ProjectDetailsView"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <VerticalStackLayout>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Maui.App.ViewModels.Project"
+    xmlns:p="clr-namespace:Maui.App.Properties"
+    Title="{x:Static p:Resources.Project_details}"
+    x:DataType="local:ProjectDetailsViewModel">
+    <VerticalStackLayout Padding="8" Spacing="12">
+        <VerticalStackLayout.Style>
+            <Style TargetType="{x:Type VerticalStackLayout}">
+                <Style.Triggers>
+                    <DataTrigger
+                        Binding="{Binding IsBusy}"
+                        TargetType="{x:Type VerticalStackLayout}"
+                        Value="True">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </DataTrigger>
+                </Style.Triggers>
+                <Setter Property="IsEnabled" Value="True" />
+            </Style>
+        </VerticalStackLayout.Style>
         <Label
             HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
+            Text="{x:Static p:Resources.Project_name}"
             VerticalOptions="Center" />
+        <Entry Placeholder="{x:Static p:Resources.Project_name}" Text="{Binding Project.Name, Mode=TwoWay}" />
+        <Button Command="{Binding UpdateCommand}" Text="{x:Static p:Resources.Update}" />
     </VerticalStackLayout>
-</ContentView>
+</ContentPage>

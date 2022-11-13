@@ -169,6 +169,15 @@ namespace Maui.App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Project details.
+        /// </summary>
+        public static string Project_details {
+            get {
+                return ResourceManager.GetString("Project details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Project name.
         /// </summary>
         public static string Project_name {
@@ -183,6 +192,15 @@ namespace Maui.App.Properties {
         public static string Success {
             get {
                 return ResourceManager.GetString("Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
             }
         }
         

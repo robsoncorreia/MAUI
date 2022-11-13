@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
+using Maui.App.Messenger;
 using Maui.App.Service.Dialog;
 using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
@@ -16,32 +18,27 @@ namespace Maui.App.ViewModels.Project
         private readonly IProjectApplication _projectApplication;
 
         public ProjectDetailsViewModel(IDialogService dialogService,
-                                INavigationService navigationService,
-                                ISettingsService settingsService,
-                                IProjectApplication projectApplication) : base(dialogService, navigationService, settingsService)
+                                       INavigationService navigationService,
+                                       ISettingsService settingsService,
+                                       IProjectApplication projectApplication) : base(dialogService, navigationService, settingsService)
         {
-            Project = new ProjectModel();
             _projectApplication = projectApplication;
+
+            WeakReferenceMessenger.Default.Register<SelectedProjectChangedMessage>(this, (r, m) =>
+            {
+                Project = m.Value;
+            });
         }
 
         [RelayCommand]
-        private async Task Create(object obj)
+        public async void Update(object obj)
         {
             try
             {
-                IsBusy = true;
-
-                await _projectApplication.Add(Project);
-
-                await DialogService.ShowAlertAsync(Properties.Resources.Project_created_successfully, Properties.Resources.Success, Properties.Resources.Close);
+                await _projectApplication.Update(Project);
             }
             catch (Exception ex)
             {
-                await DialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);
-            }
-            finally
-            {
-                IsBusy = false;
             }
         }
     }

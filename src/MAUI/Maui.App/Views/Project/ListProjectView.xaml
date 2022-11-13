@@ -11,7 +11,13 @@
     <ContentPage.Behaviors>
         <toolkit:EventToCommandBehavior Command="{Binding LoadedCommand}" EventName="Loaded" />
     </ContentPage.Behaviors>
-    <ListView ItemsSource="{Binding Projects}">
+    <ListView
+        x:Name="ListProjects"
+        ItemsSource="{Binding Projects}"
+        SelectedItem="{Binding SelectedItem}">
+        <ListView.Behaviors>
+            <toolkit:EventToCommandBehavior Command="{Binding ItemSelectedCommand}" EventName="ItemSelected" />
+        </ListView.Behaviors>
         <ListView.HeaderTemplate>
             <DataTemplate>
                 <StackLayout>

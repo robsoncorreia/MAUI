@@ -13,6 +13,8 @@ namespace Maui.Applications.Applications
             _projectService = projectService;
         }
 
+        public ProjectModel? SelectedProject { get; set; }
+
         public async Task Add(ProjectModel project)
         {
             await _projectService.Add(project);

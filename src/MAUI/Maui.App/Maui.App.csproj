@@ -105,10 +105,10 @@
 	  <MauiXaml Update="Views\Project\ListProjectView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Project\ProjectDetailsView.xaml">
+	  <MauiXaml Update="Views\Project\CreateProjectView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Project\CreateProjectView.xaml">
+	  <MauiXaml Update="Views\Project\ProjectDetailsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

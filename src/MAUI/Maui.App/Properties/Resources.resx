@@ -153,11 +153,17 @@
   <data name="Project created successfully" xml:space="preserve">
     <value>Project created successfully</value>
   </data>
+  <data name="Project details" xml:space="preserve">
+    <value>Project details</value>
+  </data>
   <data name="Project name" xml:space="preserve">
     <value>Project name</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Success</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Update</value>
   </data>
   <data name="Welcome to .NET Multi-platform App UI" xml:space="preserve">
     <value>Welcome to .NET Multi-platform App UI</value>
