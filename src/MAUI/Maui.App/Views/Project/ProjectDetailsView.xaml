@@ -5,8 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Maui.App.ViewModels.Project"
     xmlns:p="clr-namespace:Maui.App.Properties"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Title="{x:Static p:Resources.Project_details}"
     x:DataType="local:ProjectDetailsViewModel">
+    <ContentPage.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="BackgroundColor" Value="#28FF0000" />
+        </Style>
+    </ContentPage.Resources>
     <VerticalStackLayout Padding="8" Spacing="12">
         <VerticalStackLayout.Style>
             <Style TargetType="{x:Type VerticalStackLayout}">
@@ -15,6 +21,7 @@
                         Binding="{Binding IsBusy}"
                         TargetType="{x:Type VerticalStackLayout}"
                         Value="True">
+                        <Setter Property="Opacity" Value=".5" />
                         <Setter Property="IsEnabled" Value="False" />
                     </DataTrigger>
                 </Style.Triggers>
@@ -25,12 +32,38 @@
             HorizontalOptions="Center"
             Text="{x:Static p:Resources.Project_name}"
             VerticalOptions="Center" />
-        <Entry Placeholder="{x:Static p:Resources.Project_name}" Text="{Binding Project.Name, Mode=TwoWay}" />
+        <Entry
+            ClearButtonVisibility="WhileEditing"
+            MaxLength="30"
+            Placeholder="{x:Static p:Resources.Project_name}"
+            ReturnCommand="{Binding EntryReturnCommand}"
+            Text="{Binding Project.Name, Mode=TwoWay}">
+            <Entry.Behaviors>
+                <toolkit:TextValidationBehavior
+                    Flags="ValidateOnValueChanged"
+                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                    MaximumLength="30"
+                    MinimumLength="1" />
+            </Entry.Behaviors>
+        </Entry>
         <Label
             HorizontalOptions="Center"
             Text="{x:Static p:Resources.Description}"
             VerticalOptions="Center" />
-        <Entry Placeholder="{x:Static p:Resources.Description}" Text="{Binding Project.Description, Mode=TwoWay}" />
+        <Entry
+            ClearButtonVisibility="WhileEditing"
+            MaxLength="60"
+            Placeholder="{x:Static p:Resources.Description}"
+            ReturnCommand="{Binding EntryReturnCommand}"
+            Text="{Binding Project.Description, Mode=TwoWay}">
+            <Entry.Behaviors>
+                <toolkit:TextValidationBehavior
+                    Flags="ValidateOnValueChanged"
+                    InvalidStyle="{StaticResource InvalidEntryStyle}"
+                    MaximumLength="60"
+                    MinimumLength="1" />
+            </Entry.Behaviors>
+        </Entry>
         <Button Command="{Binding UpdateCommand}" Text="{x:Static p:Resources.Update}" />
     </VerticalStackLayout>
 </ContentPage>

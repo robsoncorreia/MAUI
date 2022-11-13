@@ -133,6 +133,15 @@ namespace Maui.App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description cannot be empty.
+        /// </summary>
+        public static string Description_cannot_be_empty {
+            get {
+                return ResourceManager.GetString("Description cannot be empty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Error {
@@ -192,6 +201,15 @@ namespace Maui.App.Properties {
         public static string Project_name {
             get {
                 return ResourceManager.GetString("Project name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project name cannot be empty.
+        /// </summary>
+        public static string Project_name_cannot_be_empty {
+            get {
+                return ResourceManager.GetString("Project name cannot be empty", resourceCulture);
             }
         }
         

@@ -141,6 +141,9 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="Description cannot be empty" xml:space="preserve">
+    <value>Description cannot be empty</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -161,6 +164,9 @@
   </data>
   <data name="Project name" xml:space="preserve">
     <value>Project name</value>
+  </data>
+  <data name="Project name cannot be empty" xml:space="preserve">
+    <value>Project name cannot be empty</value>
   </data>
   <data name="Success" xml:space="preserve">
     <value>Success</value>

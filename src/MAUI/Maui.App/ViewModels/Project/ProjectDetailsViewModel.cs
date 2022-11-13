@@ -31,14 +31,62 @@ namespace Maui.App.ViewModels.Project
         }
 
         [RelayCommand]
-        public async void Update(object obj)
+        private async void EntryReturn(object obj)
+        {
+            if (!await ValidadeProject(Project))
+            {
+                return;
+            }
+
+            await Update();
+
+        }
+
+
+        private async Task<bool> ValidadeProject(ProjectModel project)
+        {
+            if (string.IsNullOrEmpty(project.Name))
+            {
+                await DialogService.ShowAlertAsync($"{Properties.Resources.Project_name_cannot_be_empty}", Properties.Resources.Error, Properties.Resources.Close);
+                return false;
+            }
+            if (string.IsNullOrEmpty(project.Description))
+            {
+                await DialogService.ShowAlertAsync($"{Properties.Resources.Description_cannot_be_empty}", Properties.Resources.Error, Properties.Resources.Close);
+                return false;
+            }
+
+            return true;
+        }
+
+        [RelayCommand]
+        public async Task Update(object obj  = null)
         {
             try
             {
+                if (IsBusy)
+                {
+                    return;
+                }
+
+                if (!await ValidadeProject(Project))
+                {
+                    return;
+                }
+
+                IsBusy = true;
+
                 await _projectApplication.Update(Project);
+
+                await NavigationService.PopAsync();
             }
             catch (Exception ex)
             {
+                await DialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
     }
