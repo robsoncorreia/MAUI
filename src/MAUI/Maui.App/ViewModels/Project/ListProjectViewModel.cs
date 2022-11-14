@@ -71,7 +71,7 @@ namespace Maui.App.ViewModels.Project
 
                 await _projectApplication.Delete(project);
 
-                Projects.Remove(project);
+                _ = Projects.Remove(project);
             }
 
             catch (Exception ex)
@@ -87,11 +87,22 @@ namespace Maui.App.ViewModels.Project
         [RelayCommand]
         private async Task GetProjects()
         {
-            Projects.Clear();
-
-            foreach (ProjectModel project in await _projectApplication.List())
+            try
             {
-                Projects.Add(project);
+                Projects.Clear();
+
+                foreach (ProjectModel project in await _projectApplication.List())
+                {
+                    Projects.Add(project);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 
@@ -100,6 +111,12 @@ namespace Maui.App.ViewModels.Project
         {
             await NavigationService.NavigateToAsync(nameof(ProjectDetailsView));
             _ = WeakReferenceMessenger.Default.Send(new SelectedProjectChangedMessage(SelectedItem));
+        }
+
+        [RelayCommand]
+        public async void GoCreateProject(object obj)
+        {
+            await NavigationService.NavigateToAsync(nameof(CreateProjectView));
         }
     }
 }

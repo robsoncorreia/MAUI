@@ -10,7 +10,8 @@
     x:DataType="local:CreateProjectViewModel">
     <ContentPage.Resources>
         <Style x:Key="InvalidEntryStyle" TargetType="Entry">
-            <Setter Property="BackgroundColor" Value="#28FF0000" />
+            <Setter Property="TextColor" Value="Red" />
+            <Setter Property="PlaceholderColor" Value="Red" />
         </Style>
     </ContentPage.Resources>
     <VerticalStackLayout Padding="8" Spacing="12">
