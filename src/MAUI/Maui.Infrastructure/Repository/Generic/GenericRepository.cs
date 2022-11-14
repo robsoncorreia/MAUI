@@ -53,7 +53,7 @@ namespace Maui.Infrastructure.Repository.Generic
             return await data.Set<T>().AsNoTracking().ToListAsync();
         }
 
-        public async Task Update(T objeto)
+        public virtual async Task Update(T objeto)
         {
             using MauiContext data = new(_dbContextOptions);
             _ = data.Set<T>().Update(objeto);

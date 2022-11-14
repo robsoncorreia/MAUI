@@ -81,12 +81,14 @@ namespace Maui.Infrastructure.Repository.RequestProvider
             return result;
         }
 
-        private static void Validate(HttpResponseMessage response)
+        private static bool Validate(HttpResponseMessage response)
         {
-            _ = response.StatusCode switch
+            return  response.StatusCode switch
             {
-                HttpStatusCode.InternalServerError => throw new Exception(response.Content.ToString()),
-                _ => string.Empty
+                HttpStatusCode.OK => true,
+                HttpStatusCode.NoContent => true,
+                HttpStatusCode.Created => true,
+                _ =>  throw new Exception($"{response.ReasonPhrase}\nStatus Code:{response.StatusCode}")
             };
         }
 

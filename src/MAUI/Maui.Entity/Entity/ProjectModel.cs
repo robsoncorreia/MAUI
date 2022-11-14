@@ -5,7 +5,12 @@ namespace Maui.Entity.Entity
 {
     public class ProjectModel : EntityBase
     {
+        #region field
         private string _name = "";
+        private string _description = "";
+        private DateTime _createAt;
+        private DateTime _updatedAt;
+        #endregion field
 
         [NotNull]
         [Column("name")]
@@ -19,19 +24,44 @@ namespace Maui.Entity.Entity
             }
         }
 
-        private string _description = "";
 
         [NotNull]
         [Column("description")]
-        public string? Description
+        public string Description
         {
-            get { return _description; }
+            get => _description;
             set
             {
                 _description = value;
                 NotifyPropertyChanged();
             }
         }
+
+
+        [NotNull]
+        [Column("createAt")]
+        public DateTime CreateAt
+        {
+            get => _createAt;
+            set
+            {
+                _createAt = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        [NotNull]
+        [Column("updatedAt")]
+        public DateTime UpdatedAt
+        {
+            get => _updatedAt;
+            set
+            {
+                _updatedAt = value;
+                NotifyPropertyChanged();
+            }
+        }
+
 
     }
 }

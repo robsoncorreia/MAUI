@@ -1,6 +1,5 @@
 ﻿using Maui.Entity.Entity;
 using Maui.Infrastructure.Configuration.SqlServer;
-using Maui.Infrastructure.Helpers;
 using Maui.Infrastructure.Repository.Generic;
 using Maui.Infrastructure.Repository.Interface;
 using Maui.Infrastructure.Repository.RequestProvider;
@@ -13,6 +12,13 @@ namespace Maui.Infrastructure.Repository
         private readonly string baseURL;
         private const string PROJECTENDPOINT = "api/Project";
         private readonly IRequestProvider _requestProvider;
+        private readonly string uri;
+
+        public override async Task Update(ProjectModel project)
+        {
+            project.UpdatedAt = DateTime.Now;
+            await _requestProvider.PutAsync($"{uri}/{project.Id}", project);
+        }
 
         public override async Task<IEnumerable<ProjectModel>> List()
         {
@@ -23,30 +29,31 @@ namespace Maui.Infrastructure.Repository
 
         public override async Task<ProjectModel> Add(ProjectModel project)
         {
-            string uri = string.Format($"{baseURL}{PROJECTENDPOINT}", string.Empty);
-
-            return project.Id == 0 ?
-                await _requestProvider.PostAsync(uri, project) :
-                await _requestProvider.PutAsync(uri, project);
+            if (project.Id == 0)
+            {
+                project.CreateAt = DateTime.Now;
+                project.UpdatedAt = DateTime.Now;
+                return await _requestProvider.PostAsync(uri, project);
+            }
+            else
+            {
+                project.UpdatedAt = DateTime.Now;
+                return await _requestProvider.PutAsync($"{uri}/{project.Id}", project);
+            }
         }
 
         public ProjectRepository(IRequestProvider requestProvider) : base(requestProvider)
         {
-            var config = new ConfigurationBuilder().AddUserSecrets<MauiContext>().Build();
-            baseURL = requestProvider.baseURL;
             _requestProvider = requestProvider;
+            baseURL = _requestProvider.baseURL;
+            uri = string.Format($"{baseURL}{PROJECTENDPOINT}", string.Empty); 
         }
 
         public async Task<IEnumerable<ProjectModel>> ListExpression(Func<ProjectModel, bool> expression)
         {
-            IEnumerable<ProjectModel> projects = await _requestProvider.GetAsync<IEnumerable<ProjectModel>>($"{baseURL}{PROJECTENDPOINT}", string.Empty).ConfigureAwait(false);
+            IEnumerable<ProjectModel> projects = await _requestProvider.GetAsync<IEnumerable<ProjectModel>>(uri, string.Empty).ConfigureAwait(false);
 
-            if (projects is null)
-            {
-                return Enumerable.Empty<ProjectModel>();
-            }
-
-            return projects.Where(expression) ?? Enumerable.Empty<ProjectModel>();
+            return projects is null ? Enumerable.Empty<ProjectModel>() : projects.Where(expression) ?? Enumerable.Empty<ProjectModel>();
         }
     }
 }

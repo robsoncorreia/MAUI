@@ -214,6 +214,15 @@ namespace Maui.App.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status Code.
+        /// </summary>
+        public static string Status_Code {
+            get {
+                return ResourceManager.GetString("Status Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Success.
         /// </summary>
         public static string Success {

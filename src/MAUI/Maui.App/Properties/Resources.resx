@@ -168,6 +168,9 @@
   <data name="Project name cannot be empty" xml:space="preserve">
     <value>Project name cannot be empty</value>
   </data>
+  <data name="Status Code" xml:space="preserve">
+    <value>Status Code</value>
+  </data>
   <data name="Success" xml:space="preserve">
     <value>Success</value>
   </data>
