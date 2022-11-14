@@ -89,5 +89,37 @@ namespace Maui.App.ViewModels.Project
                 IsBusy = false;
             }
         }
+
+
+        [RelayCommand]
+        public async Task Delete(object obj = null)
+        {
+            try
+            {
+                if (IsBusy)
+                {
+                    return;
+                }
+
+                if (!await ValidadeProject(Project))
+                {
+                    return;
+                }
+
+                IsBusy = true;
+
+                await _projectApplication.Delete(Project);
+
+                await NavigationService.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await DialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
     }
 }

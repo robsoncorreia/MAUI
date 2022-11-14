@@ -138,6 +138,9 @@
   <data name="Cute dot net bot waving hi to you!" xml:space="preserve">
     <value>Cute dot net bot waving hi to you!</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>

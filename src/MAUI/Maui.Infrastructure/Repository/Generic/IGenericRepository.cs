@@ -2,7 +2,7 @@
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task Add(T objeto);
+        Task<T> Add(T objeto);
 
         Task Delete(T objeto);
 

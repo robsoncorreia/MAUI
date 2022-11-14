@@ -65,5 +65,6 @@
             </Entry.Behaviors>
         </Entry>
         <Button Command="{Binding UpdateCommand}" Text="{x:Static p:Resources.Update}" />
+        <Button Command="{Binding DeleteCommand}" Text="{x:Static p:Resources.Delete}" />
     </VerticalStackLayout>
 </ContentPage>
