@@ -52,6 +52,37 @@ namespace Maui.App.ViewModels.Project
             await GetProjects();
         }
 
+        [RelayCommand]
+        private async Task Delete(object obj)
+        {
+            try
+            {
+                if (IsBusy)
+                {
+                    return;
+                }
+
+                IsBusy = true;
+
+                if (obj is not ProjectModel project)
+                {
+                    return;
+                }
+
+                await _projectApplication.Delete(project);
+
+                Projects.Remove(project);
+            }
+
+            catch (Exception ex)
+            {
+                await DialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
 
         [RelayCommand]
         private async Task GetProjects()

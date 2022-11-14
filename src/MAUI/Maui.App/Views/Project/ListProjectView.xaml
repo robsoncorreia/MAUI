@@ -22,7 +22,12 @@
         </ListView.Behaviors>
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="model:ProjectModel">
-                <TextCell Detail="{Binding Description}" Text="{Binding Name, Mode=OneWay, TargetNullValue=' '}" />
+                <ViewCell>
+                    <StackLayout Spacing="10">
+                        <Label Text="{Binding Name, Mode=OneWay, TargetNullValue=' '}" />
+                        <Button Command="{Binding Source={RelativeSource AncestorType={x:Type local:ListProjectViewModel}}, Path=DeleteCommand}" CommandParameter="{Binding}" Text="{x:Static p:Resources.Delete}" />
+                    </StackLayout>
+                </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>

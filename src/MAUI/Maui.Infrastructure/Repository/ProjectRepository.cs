@@ -62,7 +62,7 @@ namespace Maui.Infrastructure.Repository
 
         public Task<ProjectModel> FindById(int id)
         {
-            throw new NotImplementedException();
+            return _requestProvider.GetAsync < ProjectModel>($"{uri}/{id}");
         }
 
         public Task<IEnumerable<ProjectModel>> ListExpression(Func<ProjectModel, bool> expression, string url, string token)
