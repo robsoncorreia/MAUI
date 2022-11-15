@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Maui.Entity.Entity
 {
+    [Table("Project")]
     public class ProjectModel : EntityBase
     {
         #region field

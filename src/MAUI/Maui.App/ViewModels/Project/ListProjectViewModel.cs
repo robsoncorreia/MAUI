@@ -89,6 +89,13 @@ namespace Maui.App.ViewModels.Project
         {
             try
             {
+                if (IsBusy)
+                {
+                    return;
+                }
+
+                IsBusy = true;
+
                 Projects.Clear();
 
                 foreach (ProjectModel project in await _projectApplication.List())
@@ -107,7 +114,7 @@ namespace Maui.App.ViewModels.Project
         }
 
         [RelayCommand]
-        public async void ItemTapped(object obj)
+        public async void Edit(object obj)
         {
             await NavigationService.NavigateToAsync(nameof(ProjectDetailsView));
             _ = WeakReferenceMessenger.Default.Send(new SelectedProjectChangedMessage(SelectedItem));

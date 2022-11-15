@@ -147,6 +147,9 @@
   <data name="Description cannot be empty" xml:space="preserve">
     <value>Description cannot be empty</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>

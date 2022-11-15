@@ -19,31 +19,39 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ListView
-            x:Name="ListProjects"
+            x:Name="listProjects"
             ItemsSource="{Binding Projects}"
             SelectedItem="{Binding SelectedItem}">
             <ListView.Behaviors>
-                <toolkit:EventToCommandBehavior Command="{Binding ItemTappedCommand}" EventName="ItemTapped" />
+                <toolkit:EventToCommandBehavior Command="{Binding EditCommand}" EventName="ItemTapped" />
             </ListView.Behaviors>
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="model:ProjectModel">
                     <ViewCell>
-                        <Grid Margin="16">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Name, Mode=OneWay, TargetNullValue=' '}" />
-                            <ImageButton
-                                Grid.Column="1"
-                                BackgroundColor="Transparent"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ListProjectViewModel}}, Path=DeleteCommand}"
-                                CommandParameter="{Binding}"
-                                HeightRequest="24"
-                                Source="delete_forever_dark.png"
-                                WidthRequest="24" />
+                        <Border Margin="4" BackgroundColor="#2F000000">
+                            <Grid Margin="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Label Text="{Binding Name, Mode=OneWay, TargetNullValue=' '}" />
+                                <Label Grid.Row="1" Text="{Binding Description, Mode=OneWay, TargetNullValue=' '}" />
+                                <ImageButton
+                                    Grid.RowSpan="2"
+                                    Grid.Column="1"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding Source={x:Reference listProjects}, Path=BindingContext.DeleteCommand}"
+                                    CommandParameter="{Binding}"
+                                    HeightRequest="24"
+                                    Source="delete_forever_dark.png"
+                                    WidthRequest="24" />
 
-                        </Grid>
+                            </Grid>
+                        </Border>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

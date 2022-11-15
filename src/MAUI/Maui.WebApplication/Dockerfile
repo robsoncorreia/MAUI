@@ -14,6 +14,7 @@ RUN dotnet restore "Maui.WebApplication/Maui.WebApplication.csproj"
 COPY . .
 WORKDIR "/src/Maui.WebApplication"
 RUN dotnet build "Maui.WebApplication.csproj" -c Release -o /app/build
+#RUN dotnet build "Maui.WebApplication.csproj" -c Debug -o /app/build
 
 FROM build AS publish
 RUN dotnet publish "Maui.WebApplication.csproj" -c Release -o /app/publish /p:UseAppHost=false
