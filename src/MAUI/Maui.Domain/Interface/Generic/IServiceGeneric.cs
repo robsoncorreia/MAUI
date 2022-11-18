@@ -10,6 +10,6 @@
 
         Task<T> FindById(int id);
 
-        Task<IEnumerable<T>> List();
+        Task<IEnumerable<T>> List(Infrastructure.Query.QueryParameters queryParameters);
     }
 }

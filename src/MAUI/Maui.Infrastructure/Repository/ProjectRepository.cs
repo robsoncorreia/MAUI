@@ -1,4 +1,5 @@
 ﻿using Maui.Entity.Entity;
+using Maui.Infrastructure.Query;
 using Maui.Infrastructure.Repository.Generic;
 using Maui.Infrastructure.Repository.Interface;
 using Maui.Infrastructure.Repository.RequestProvider;
@@ -18,9 +19,9 @@ namespace Maui.Infrastructure.Repository
             _ = await _requestProvider.PutAsync($"{uri}/{project.Id}", project);
         }
 
-        public async Task<IEnumerable<ProjectModel>> List()
+        public async Task<IEnumerable<ProjectModel>> List(QueryParameters queryParameters  = null)
         {
-            IEnumerable<ProjectModel> projects = await _requestProvider.GetAsync<IEnumerable<ProjectModel>>($"{baseURL}{PROJECTENDPOINT}", string.Empty).ConfigureAwait(false);
+            IEnumerable<ProjectModel> projects = await _requestProvider.GetAsync<IEnumerable<ProjectModel>>($"{baseURL}{PROJECTENDPOINT}", string.Empty, queryParameters).ConfigureAwait(false);
 
             return projects ?? Enumerable.Empty<ProjectModel>();
         }

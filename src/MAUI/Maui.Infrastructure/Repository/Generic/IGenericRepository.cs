@@ -8,7 +8,7 @@
 
         Task<T> FindById(int id);
 
-        Task<IEnumerable<T>> List();
+        Task<IEnumerable<T>> List(Query.QueryParameters queryParameters);
 
         Task Update(T objeto);
 

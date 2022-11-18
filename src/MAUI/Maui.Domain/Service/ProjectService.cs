@@ -1,5 +1,6 @@
 ﻿using Maui.Domain.Interface.Project;
 using Maui.Entity.Entity;
+using Maui.Infrastructure.Query;
 using Maui.Infrastructure.Repository.Interface;
 
 namespace Maui.Domain.Service
@@ -28,9 +29,9 @@ namespace Maui.Domain.Service
             return await _projectRepository.FindById(id);
         }
 
-        public async Task<IEnumerable<ProjectModel>> List()
+        public async Task<IEnumerable<ProjectModel>> List(QueryParameters queryParameters = null)
         {
-            return await _projectRepository.List();
+            return await _projectRepository.List(queryParameters);
         }
 
         public async Task<IEnumerable<ProjectModel>> ListExpression(Func<ProjectModel, bool> expression)

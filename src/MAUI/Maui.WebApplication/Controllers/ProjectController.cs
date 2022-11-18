@@ -1,5 +1,6 @@
 ﻿using Maui.Entity.Entity;
 using Maui.Infrastructure.Configuration.SqlServer;
+using Maui.Infrastructure.Query;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,16 +17,20 @@ namespace Maui.WebApplication.Controllers
             _context = context;
         }
 
-        // GET: api/Project
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProjectModel>>> GetProject()
+        public async Task<ActionResult> GetAllProjects([FromQuery] QueryParameters queryParameters)
         {
-            return await _context.Project.ToListAsync();
+            IQueryable<ProjectModel> products = _context.Project;
+
+            products = products
+                .Skip(queryParameters.Size * (queryParameters.Page - 1))
+                .Take(queryParameters.Size);
+
+            return Ok(await products.ToArrayAsync());
         }
 
-        // GET: api/Project/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProjectModel>> GetProjectModel(int id)
+        public async Task<ActionResult<ProjectModel>> GetProjectById(int id)
         {
             var projectModel = await _context.Project.FindAsync(id);
 
@@ -40,7 +45,7 @@ namespace Maui.WebApplication.Controllers
         // PUT: api/Project/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProjectModel(int id, ProjectModel projectModel)
+        public async Task<IActionResult> PutProject(int id, ProjectModel projectModel)
         {
             if (id != projectModel.Id)
             {
@@ -51,7 +56,7 @@ namespace Maui.WebApplication.Controllers
 
             try
             {
-                await _context.SaveChangesAsync();
+                _ = await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -71,17 +76,17 @@ namespace Maui.WebApplication.Controllers
         // POST: api/Project
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ProjectModel>> PostProjectModel(ProjectModel projectModel)
+        public async Task<ActionResult<ProjectModel>> PostProject(ProjectModel projectModel)
         {
             _context.Project.Add(projectModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProjectModel", new { id = projectModel.Id }, projectModel);
+            return CreatedAtAction("GetProjectById", new { id = projectModel.Id }, projectModel);
         }
 
         // DELETE: api/Project/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteProjectModel(int id)
+        public async Task<IActionResult> DeleteProject(int id)
         {
             var projectModel = await _context.Project.FindAsync(id);
             if (projectModel == null)
@@ -89,8 +94,8 @@ namespace Maui.WebApplication.Controllers
                 return NotFound();
             }
 
-            _context.Project.Remove(projectModel);
-            await _context.SaveChangesAsync();
+            _ = _context.Project.Remove(projectModel);
+            _ = await _context.SaveChangesAsync();
 
             return NoContent();
         }

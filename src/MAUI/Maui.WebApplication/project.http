@@ -1,3 +1,9 @@
 GET https://localhost:7058/api/Project
 ###
 GET https://localhost:49157/api/Project
+###
+GET httpS://localhost:49165/api/Project
+###
+GET httpS://localhost:49166/api/Project
+###
+GET https://mauiwebapi.azurewebsites.net/api/Project

@@ -3,12 +3,19 @@ using Microsoft.EntityFrameworkCore;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<MauiContext>(options =>
-    options.UseSqlServer(MauiContext.connectionString));
+string? connectionStrings = builder.Configuration["ConnectionStrings"];
 
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<MauiContext>(options =>
+{
+    _ = options.UseSqlServer(connectionStrings);
+    //_ = options.UseInMemoryDatabase(Guid.NewGuid().ToString());
+});
 
 WebApplication app = builder.Build();
 

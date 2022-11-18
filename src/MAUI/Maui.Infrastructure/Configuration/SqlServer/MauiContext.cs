@@ -1,5 +1,5 @@
 ﻿using Maui.Entity.Entity;
-using Maui.Infrastructure.Helpers;
+using Maui.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -9,15 +9,22 @@ namespace Maui.Infrastructure.Configuration.SqlServer
     {
 
         public static string? connectionString;
-        public MauiContext(DbContextOptions options) : base(options)
+        public MauiContext(DbContextOptions<MauiContext> options) : base(options)
         {
+            IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<MauiContext>().Build();
+            connectionString = config["ConnectionString"];
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.Seed();
+            base.OnModelCreating(modelBuilder);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var config = new ConfigurationBuilder().AddUserSecrets<MauiContext>().Build();
-            connectionString = config["ConnectionString"];
             _ = optionsBuilder.UseSqlServer(connectionString);
+            base.OnConfiguring(optionsBuilder);
         }
 
         public DbSet<ProjectModel>? Project { get; set; }

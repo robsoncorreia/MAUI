@@ -9,6 +9,7 @@ using Maui.App.ViewModels.Base;
 using Maui.App.Views.Project;
 using Maui.Applications.Interface;
 using Maui.Entity.Entity;
+using Maui.Infrastructure.Query;
 using System.Collections.ObjectModel;
 
 namespace Maui.App.ViewModels.Project
@@ -95,10 +96,9 @@ namespace Maui.App.ViewModels.Project
                 }
 
                 IsBusy = true;
-
                 Projects.Clear();
 
-                foreach (ProjectModel project in await _projectApplication.List())
+                foreach (ProjectModel project in await _projectApplication.List(new QueryParameters { Page = 1, Size =5}))
                 {
                     Projects.Add(project);
                 }

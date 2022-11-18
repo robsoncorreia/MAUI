@@ -4,7 +4,7 @@
     {
         string? baseURL { get; }
 
-        Task<TResult> GetAsync<TResult>(string uri, string token = "");
+        Task<TResult> GetAsync<TResult>(string uri, string token = "", Query.QueryParameters queryParameters = null);
 
         Task<TResult> PostAsync<TResult>(string uri, TResult data, string token = "", string header = "");
 

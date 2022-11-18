@@ -1,10 +1,12 @@
 ﻿using Maui.Infrastructure.Configuration.SqlServer;
+using Maui.Infrastructure.Query;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using System.Net;
 using System.Net.Http.Headers;
+using static System.Net.WebRequestMethods;
 
 namespace Maui.Infrastructure.Repository.RequestProvider
 {
@@ -38,13 +40,18 @@ namespace Maui.Infrastructure.Repository.RequestProvider
             _serializerSettings.Converters.Add(new StringEnumConverter());
         }
 
-        public async Task<TResult> GetAsync<TResult>(string uri, string token = "")
+        public async Task<TResult> GetAsync<TResult>(string uri, string token = "", QueryParameters? queryParameters = null)
         {
+            if (queryParameters is QueryParameters)
+            {
+                uri = $"{uri}?Page={queryParameters.Page}&Size={queryParameters.Size}";
+            }
+
             HttpClient httpClient = GetOrCreateHttpClient(token);
 
             HttpResponseMessage response = await httpClient.GetAsync(uri).ConfigureAwait(false);
 
-            Validate(response);
+            _ = Validate(response);
 
             await HandleResponse(response).ConfigureAwait(false);
 
@@ -70,7 +77,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
             HttpResponseMessage response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
 
-            Validate(response);
+            _ = Validate(response);
 
             await HandleResponse(response).ConfigureAwait(false);
 
@@ -83,12 +90,12 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
         private static bool Validate(HttpResponseMessage response)
         {
-            return  response.StatusCode switch
+            return response.StatusCode switch
             {
                 HttpStatusCode.OK => true,
                 HttpStatusCode.NoContent => true,
                 HttpStatusCode.Created => true,
-                _ =>  throw new Exception($"{response.ReasonPhrase}\nStatus Code:{response.StatusCode}")
+                _ => throw new Exception($"{response.ReasonPhrase}\nStatus Code:{response.StatusCode}")
             };
         }
 
@@ -107,7 +114,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
             HttpResponseMessage response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
 
-            Validate(response);
+            _ = Validate(response);
 
             await HandleResponse(response).ConfigureAwait(false);
 
@@ -133,7 +140,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
 
             HttpResponseMessage response = await httpClient.PutAsync(uri, content).ConfigureAwait(false);
 
-            Validate(response);
+            _ = Validate(response);
 
             await HandleResponse(response).ConfigureAwait(false);
 
