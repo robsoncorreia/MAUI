@@ -26,6 +26,12 @@ namespace Maui.Infrastructure.Repository
             return projects ?? Enumerable.Empty<ProjectModel>();
         }
 
+
+        public async Task<int> Count()
+        {
+           return await _requestProvider.GetAsync<int>($"{baseURL}{PROJECTENDPOINT}/Count", string.Empty).ConfigureAwait(false);
+        }
+
         public async Task<ProjectModel> Add(ProjectModel project)
         {
             if (project.Id == 0)

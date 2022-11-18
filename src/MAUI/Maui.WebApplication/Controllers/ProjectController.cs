@@ -29,6 +29,14 @@ namespace Maui.WebApplication.Controllers
             return Ok(await products.ToArrayAsync());
         }
 
+        [HttpGet("Count")]
+        public async Task<ActionResult> GetAllProjects()
+        {
+            IQueryable<ProjectModel> products = _context.Project;
+
+            return Ok(await products.CountAsync());
+        }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ProjectModel>> GetProjectById(int id)
         {

@@ -31,7 +31,7 @@ namespace Maui.Applications.Applications
             return await _projectService.FindById(id);
         }
 
-        public async Task<IEnumerable<ProjectModel>> List(QueryParameters queryParameters = null)
+        public async Task<IEnumerable<ProjectModel>> List(QueryParameters? queryParameters = null)
         {
             return await _projectService.List(queryParameters);
         }
@@ -44,6 +44,11 @@ namespace Maui.Applications.Applications
         public async Task Update(ProjectModel project)
         {
             await _projectService.Update(project);
+        }
+
+        public async Task<int> Count()
+        {
+            return await _projectService.Count();
         }
     }
 }

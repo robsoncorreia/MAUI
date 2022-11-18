@@ -19,6 +19,18 @@ namespace Maui.App.ViewModels.Project
         [ObservableProperty]
         private ProjectModel selectedItem;
 
+        [ObservableProperty]
+        private int count;
+
+        [ObservableProperty]
+        private int page = 1;
+
+        [ObservableProperty]
+        private int size = 5;
+
+        [ObservableProperty]
+        private decimal pageCount = 0;
+
         public ObservableCollection<ProjectModel> Projects { get; private set; }
 
         private readonly IProjectApplication _projectApplication;
@@ -72,7 +84,10 @@ namespace Maui.App.ViewModels.Project
 
                 await _projectApplication.Delete(project);
 
-                _ = Projects.Remove(project);
+
+                IsBusy = false;
+
+                await GetProjects();
             }
 
             catch (Exception ex)
@@ -96,9 +111,18 @@ namespace Maui.App.ViewModels.Project
                 }
 
                 IsBusy = true;
+
                 Projects.Clear();
 
-                foreach (ProjectModel project in await _projectApplication.List(new QueryParameters { Page = 1, Size =5}))
+                Count = await _projectApplication.Count();
+
+                Size = Size > Count ? Count : Size;
+
+                PageCount = Math.Round((decimal)Count / Size, MidpointRounding.ToPositiveInfinity);
+
+                Page = Page > PageCount ? (int)PageCount : Page;
+
+                foreach (ProjectModel project in await _projectApplication.List(new QueryParameters { Page = Page, Size = Size }))
                 {
                     Projects.Add(project);
                 }

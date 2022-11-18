@@ -43,5 +43,10 @@ namespace Maui.Domain.Service
         {
             await _projectRepository.Update(project);
         }
+
+        public async Task<int> Count()
+        {
+           return await _projectRepository.Count();
+        }
     }
 }
