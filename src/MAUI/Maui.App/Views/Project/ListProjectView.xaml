@@ -17,9 +17,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <ListView
             x:Name="listProjects"
+            Grid.Row="0"
             Margin="8"
             ItemsSource="{Binding Projects}"
             SelectedItem="{Binding SelectedItem}">
@@ -57,26 +59,45 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <HorizontalStackLayout
+        <Border
+            HeightRequest="2"
             Grid.Row="1"
+            Stroke="{StaticResource DarkGreenColor}"/>
+        <HorizontalStackLayout
+            Grid.Row="2"
             Margin="8"
             HorizontalOptions="CenterAndExpand"
             Spacing="8">
+            <HorizontalStackLayout.Style>
+                <Style TargetType="{x:Type HorizontalStackLayout}">
+                    <Style.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Count}"
+                            TargetType="{x:Type HorizontalStackLayout}"
+                            Value="0">
+                            <Setter Property="IsVisible" Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </HorizontalStackLayout.Style>
             <Button
                 Command="{Binding PageDownCommand}"
-                Text="-" />
+                HorizontalOptions="Center"
+                Text="-"
+                VerticalOptions="Center" />
             <Entry
-                Keyboard="Numeric"
                 HorizontalOptions="Center"
                 IsReadOnly="True"
+                Keyboard="Numeric"
                 ReturnCommand="{Binding GetProjectsCommand}"
                 Text="{Binding Page}"
                 VerticalOptions="Center" />
             <Button
                 Command="{Binding PageUpCommand}"
-                Text="+" />
+                HorizontalOptions="Center"
+                Text="+"
+                VerticalOptions="Center" />
             <Entry
-                Grid.Column="3"
                 HorizontalOptions="Center"
                 ReturnCommand="{Binding GetProjectsCommand}"
                 Text="{Binding Size}"
@@ -97,7 +118,7 @@
                 VerticalOptions="Center" />
         </HorizontalStackLayout>
         <Button
-            Grid.Row="1"
+            Grid.Row="2"
             Margin="8"
             Command="{Binding GoCreateProjectCommand}"
             HorizontalOptions="End"

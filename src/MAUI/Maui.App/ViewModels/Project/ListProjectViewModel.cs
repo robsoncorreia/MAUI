@@ -138,6 +138,12 @@ namespace Maui.App.ViewModels.Project
 
                 Count = await _projectApplication.Count();
 
+                if (Count == 0)
+                {
+                    await NavigationService.NavigateToAsync(nameof(CreateProjectView));
+                    return;
+                }
+
                 Size = Size > Count ? Count : Size;
 
                 PageCount = (int)Math.Round((decimal)(Count / Size), MidpointRounding.ToPositiveInfinity);

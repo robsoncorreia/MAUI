@@ -23,8 +23,8 @@ namespace Maui.WebApplication.Controllers
             IQueryable<ProjectModel> products = _context.Project;
 
             products = products
-                .Skip(queryParameters.Size * (queryParameters.Page - 1))
-                .Take(queryParameters.Size);
+                .Skip((int)(queryParameters.Size * (queryParameters.Page - 1)))
+                .Take((int)queryParameters.Size);
 
             return Ok(await products.ToArrayAsync());
         }
