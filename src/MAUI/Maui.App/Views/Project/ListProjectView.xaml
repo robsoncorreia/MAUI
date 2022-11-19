@@ -20,6 +20,7 @@
         </Grid.RowDefinitions>
         <ListView
             x:Name="listProjects"
+            Margin="8"
             ItemsSource="{Binding Projects}"
             SelectedItem="{Binding SelectedItem}">
             <ListView.Behaviors>
@@ -56,36 +57,51 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
+        <HorizontalStackLayout
+            Grid.Row="1"
+            Margin="8"
+            HorizontalOptions="CenterAndExpand"
+            Spacing="8">
+            <Button
+                Command="{Binding PageDownCommand}"
+                Text="-" />
             <Entry
-                Grid.Column="0"
+                Keyboard="Numeric"
+                HorizontalOptions="Center"
+                IsReadOnly="True"
                 ReturnCommand="{Binding GetProjectsCommand}"
-                Text="{Binding Page}" />
-            <Entry
-                Grid.Column="1"
-                ReturnCommand="{Binding GetProjectsCommand}"
-                Text="{Binding Size}" />
-            <Entry
-                Grid.Column="2"
-                IsEnabled="False"
-                Text="{Binding Count}" />
+                Text="{Binding Page}"
+                VerticalOptions="Center" />
+            <Button
+                Command="{Binding PageUpCommand}"
+                Text="+" />
             <Entry
                 Grid.Column="3"
+                HorizontalOptions="Center"
+                ReturnCommand="{Binding GetProjectsCommand}"
+                Text="{Binding Size}"
+                VerticalOptions="Center" />
+            <Entry
+                Grid.Column="4"
+                HorizontalOptions="Center"
                 IsEnabled="False"
-                Text="{Binding PageCount}" />
-            <Button
+                IsReadOnly="True"
+                Text="{Binding Count}"
+                VerticalOptions="Center" />
+            <Entry
                 Grid.Column="5"
-                Margin="8"
-                Command="{Binding GoCreateProjectCommand}"
-                HorizontalOptions="End"
-                Text="{x:Static p:Resources.Create_Project}" />
-        </Grid>
+                HorizontalOptions="Center"
+                IsEnabled="False"
+                IsReadOnly="True"
+                Text="{Binding PageCount}"
+                VerticalOptions="Center" />
+        </HorizontalStackLayout>
+        <Button
+            Grid.Row="1"
+            Margin="8"
+            Command="{Binding GoCreateProjectCommand}"
+            HorizontalOptions="End"
+            Text="{x:Static p:Resources.Create_Project}"
+            VerticalOptions="End" />
     </Grid>
 </ContentPage>

@@ -20,13 +20,13 @@ namespace Maui.App.ViewModels.Project
         private ProjectModel selectedItem;
 
         [ObservableProperty]
-        private int count;
+        private decimal count;
 
         [ObservableProperty]
-        private int page = 1;
+        private decimal page = 1;
 
         [ObservableProperty]
-        private int size = 5;
+        private decimal size = 5;
 
         [ObservableProperty]
         private decimal pageCount = 0;
@@ -101,6 +101,28 @@ namespace Maui.App.ViewModels.Project
         }
 
         [RelayCommand]
+        private async Task PageUp(object obj)
+        {
+            if (Page >= PageCount)
+            {
+                return;
+            }
+            Page++;
+            await GetProjects();
+        }
+
+        [RelayCommand]
+        private async Task PageDown(object obj)
+        {
+            if (Page == 1)
+            {
+                return;
+            }
+            Page--;
+            await GetProjects();
+        }
+
+        [RelayCommand]
         private async Task GetProjects()
         {
             try
@@ -118,9 +140,9 @@ namespace Maui.App.ViewModels.Project
 
                 Size = Size > Count ? Count : Size;
 
-                PageCount = Math.Round((decimal)Count / Size, MidpointRounding.ToPositiveInfinity);
+                PageCount = (int)Math.Round((decimal)(Count / Size), MidpointRounding.ToPositiveInfinity);
 
-                Page = Page > PageCount ? (int)PageCount : Page;
+                Page = Page > PageCount ? PageCount : Page;
 
                 foreach (ProjectModel project in await _projectApplication.List(new QueryParameters { Page = Page, Size = Size }))
                 {

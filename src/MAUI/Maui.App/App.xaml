@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <!--#region Converters-->
             <converters:FirstValidationErrorConverter x:Key="firstValidationErrorConverter" />
+            <converters:NumberToArrayConverter x:Key="numberToArrayConverter" />
             <!--#endregion Converters-->
 
             <!--  COLORS  -->

@@ -44,7 +44,7 @@
                     Flags="ValidateOnValueChanged"
                     InvalidStyle="{StaticResource InvalidEntryStyle}"
                     MaximumLength="30"
-                    MinimumLength="1"/>
+                    MinimumLength="1" />
             </Entry.Behaviors>
         </Entry>
         <Label
@@ -62,7 +62,7 @@
                     Flags="ValidateOnValueChanged"
                     InvalidStyle="{StaticResource InvalidEntryStyle}"
                     MaximumLength="60"
-                    MinimumLength="1"/>
+                    MinimumLength="1" />
             </Entry.Behaviors>
         </Entry>
         <Button Command="{Binding CreateCommand}" Text="{x:Static p:Resources.Create}" />

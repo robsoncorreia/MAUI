@@ -8,12 +8,12 @@ namespace Maui.Infrastructure.Query
 {
     public class QueryParameters
     {
-        const int _maxSize = 100;
-        private int _size = 50;
+        const decimal _maxSize = 100;
+        private decimal _size = 50;
 
-        public int Page { get; set; } = 1;
+        public decimal Page { get; set; } = 1;
 
-        public int Size
+        public decimal Size
         {
             get { return _size; }
             set
