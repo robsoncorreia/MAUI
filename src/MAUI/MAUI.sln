@@ -31,7 +31,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{4321EF7B-44E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Maui.WebApplication", "Maui.WebApplication\Maui.WebApplication.csproj", "{562ABCC8-4819-463A-AD4F-08927602EEF2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packing", "Packing", "{9F9CA793-7008-4331-BE0F-39A7709C222E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packaging", "Packaging", "{9F9CA793-7008-4331-BE0F-39A7709C222E}"
 EndProject
 Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "Maui.Packaging", "Maui.Packaging\Maui.Packaging.wapproj", "{D4A8CB51-9B48-4936-8163-BDED5DAEF328}"
 EndProject
