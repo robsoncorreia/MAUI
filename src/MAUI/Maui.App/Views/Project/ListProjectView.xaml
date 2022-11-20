@@ -79,7 +79,11 @@
                     </Style.Triggers>
                 </Style>
             </HorizontalStackLayout.Style>
-
+            <Entry
+                HorizontalOptions="Center"
+                ReturnCommand="{Binding GetProjectsCommand}"
+                Text="{Binding SearchTerm}"
+                VerticalOptions="Center" />
             <Picker ItemsSource="{Binding OrderBy}" SelectedIndex="{Binding SelectedIndexOrderBy}">
                 <Picker.Behaviors>
                     <toolkit:EventToCommandBehavior Command="{Binding GetProjectsCommand}" EventName="SelectedIndexChanged" />

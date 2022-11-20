@@ -17,7 +17,10 @@ namespace Maui.App.ViewModels.Project
     public partial class ListProjectViewModel : ViewModelBase
     {
         [ObservableProperty]
-        private ProjectModel selectedItem;
+        private ProjectModel selectedItem;       
+        
+        [ObservableProperty]
+        private string searchTerm;
 
         [ObservableProperty]
         private decimal count;
@@ -162,7 +165,8 @@ namespace Maui.App.ViewModels.Project
                     Page = Page,
                     Size = Size,
                     SortBy = GetSortBy(),
-                    SortOrder = (SortOrder)SelectedIndexSortOrder
+                    SortOrder = (SortOrder)SelectedIndexSortOrder,
+                    SearchTerm = SearchTerm,
                 };
 
                 foreach (ProjectModel project in await _projectApplication.List(query))

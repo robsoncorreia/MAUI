@@ -46,6 +46,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
                 uri = $"{uri}?{nameof(queryParameters.Page)}={queryParameters.Page}&" +
                             $"{nameof(queryParameters.Size)}={queryParameters.Size}&" +
                             $"{nameof(queryParameters.SortBy)}={queryParameters.SortBy}&" +
+                            $"{(string.IsNullOrEmpty(queryParameters.SearchTerm) ? "" : $"{nameof(queryParameters.SearchTerm)}={queryParameters.SearchTerm}&")}" +
                             $"{nameof(queryParameters.SortOrder)}={(int)queryParameters.SortOrder}";
             }
 

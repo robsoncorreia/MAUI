@@ -2,6 +2,7 @@
 {
     public class QueryParameters
     {
+
         private const decimal _maxSize = 100;
         private decimal _size = 50;
 
@@ -16,6 +17,8 @@
         public string SortBy { get; set; } = "Id";
 
         public SortOrder SortOrder { get; set; } = SortOrder.Ascending;
+
+        public string SearchTerm { get; set; } = string.Empty;
     }
 
     public enum SortOrder

@@ -23,6 +23,12 @@ namespace Maui.WebApplication.Controllers
         {
             IQueryable<ProjectModel> products = _context.Project;
 
+            if (!string.IsNullOrEmpty(queryParameters.SearchTerm))
+            {
+                products = products.Where(p => p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower()) ||
+                                               p.Description.ToLower().Contains(queryParameters.SearchTerm.ToLower())); 
+            } 
+
             if (!string.IsNullOrEmpty(queryParameters.SortBy))
             {
                 if (typeof(ProjectModel).GetProperty(queryParameters.SortBy) is not null)
