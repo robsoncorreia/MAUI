@@ -4,7 +4,6 @@ using Maui.App.Service.Dialog;
 using Maui.App.Service.Navigation;
 using Maui.App.Service.Settings;
 using Maui.App.ViewModels.Base;
-using Maui.App.Views.Project;
 using Maui.Applications.Interface;
 using Maui.Entity.Entity;
 
@@ -16,7 +15,6 @@ namespace Maui.App.ViewModels.Project
         private ProjectModel project;
 
         private readonly IProjectApplication _projectApplication;
-
 
         public CreateProjectViewModel(IDialogService dialogService,
                                 INavigationService navigationService,
@@ -36,7 +34,6 @@ namespace Maui.App.ViewModels.Project
             }
 
             await Create();
-
         }
 
         private async Task<bool> ValidadeProject(ProjectModel project)

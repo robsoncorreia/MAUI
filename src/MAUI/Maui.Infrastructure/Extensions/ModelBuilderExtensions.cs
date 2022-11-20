@@ -7,15 +7,14 @@ namespace Maui.Infrastructure.Extensions
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
-
-
             _ = modelBuilder.Entity<ProjectModel>().HasData(
-                new ProjectModel { 
-                    Id = 1, 
-                    Name = "Grunge Skater Jeans", 
-                    Description= "oi" , 
-                    CreateAt = DateTime.Now, 
-                    UpdatedAt = DateTime.Now 
+                new ProjectModel
+                {
+                    Id = 1,
+                    Name = "Grunge Skater Jeans",
+                    Description = "oi",
+                    CreateAt = DateTime.Now,
+                    UpdatedAt = DateTime.Now
                 },
                 new ProjectModel { Id = 2, Name = "Polo Shirt", },
                 new ProjectModel { Id = 3, Name = "Skater Graphic T-Shirt" },

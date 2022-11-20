@@ -15,6 +15,7 @@ namespace Maui.App.ViewModels.Project
     {
         [ObservableProperty]
         private ProjectModel project;
+
         private readonly IProjectApplication _projectApplication;
 
         public ProjectDetailsViewModel(IDialogService dialogService,
@@ -39,9 +40,7 @@ namespace Maui.App.ViewModels.Project
             }
 
             await Update();
-
         }
-
 
         private async Task<bool> ValidadeProject(ProjectModel project)
         {
@@ -60,7 +59,7 @@ namespace Maui.App.ViewModels.Project
         }
 
         [RelayCommand]
-        public async Task Update(object obj  = null)
+        public async Task Update(object obj = null)
         {
             try
             {
@@ -89,7 +88,6 @@ namespace Maui.App.ViewModels.Project
                 IsBusy = false;
             }
         }
-
 
         [RelayCommand]
         public async Task Delete(object obj = null)

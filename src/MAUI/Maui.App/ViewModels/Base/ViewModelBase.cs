@@ -26,7 +26,6 @@ namespace Maui.App.ViewModels.Base
 
         public ISettingsService SettingsService { get; private set; }
 
-
         public ViewModelBase(IDialogService dialogService,
                              INavigationService navigationService,
                              ISettingsService settingsService)
@@ -35,7 +34,6 @@ namespace Maui.App.ViewModels.Base
             NavigationService = navigationService;
             SettingsService = settingsService;
         }
-
 
         public virtual Task InitializeAsync()
         {

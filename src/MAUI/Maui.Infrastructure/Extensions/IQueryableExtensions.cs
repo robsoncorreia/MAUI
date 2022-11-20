@@ -3,7 +3,6 @@ using System.Linq.Expressions;
 
 namespace Maui.Infrastructure.Extensions
 {
-
     public static class IQueryableExtensions
     {
         public static IQueryable<TEntity> OrderByCustom<TEntity>(this IQueryable<TEntity> items, string sortBy, SortOrder sortOrder)

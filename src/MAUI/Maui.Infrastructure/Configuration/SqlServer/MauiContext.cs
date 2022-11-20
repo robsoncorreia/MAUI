@@ -1,5 +1,4 @@
 ﻿using Maui.Entity.Entity;
-using Maui.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -7,8 +6,8 @@ namespace Maui.Infrastructure.Configuration.SqlServer
 {
     public class MauiContext : DbContext
     {
-
         public static string? connectionString;
+
         public MauiContext(DbContextOptions<MauiContext> options) : base(options)
         {
             IConfigurationRoot config = new ConfigurationBuilder().AddUserSecrets<MauiContext>().Build();

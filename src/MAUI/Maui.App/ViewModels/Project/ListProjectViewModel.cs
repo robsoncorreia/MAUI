@@ -41,7 +41,6 @@ namespace Maui.App.ViewModels.Project
 
         public List<string> OrderBy { get; } = new List<string> { Properties.Resources.Name, Properties.Resources.Create_At };
 
-
         public ObservableCollection<ProjectModel> Projects { get; private set; }
 
         private readonly IProjectApplication _projectApplication;
@@ -57,7 +56,6 @@ namespace Maui.App.ViewModels.Project
 
             _projectApplication = projectApplication;
         }
-
 
         [RelayCommand]
         public void NavigatedFrom(object obj)
@@ -95,12 +93,10 @@ namespace Maui.App.ViewModels.Project
 
                 await _projectApplication.Delete(project);
 
-
                 IsBusy = false;
 
                 await GetProjects();
             }
-
             catch (Exception ex)
             {
                 await DialogService.ShowAlertAsync($"{ex.Message}", Properties.Resources.Error, Properties.Resources.Close);

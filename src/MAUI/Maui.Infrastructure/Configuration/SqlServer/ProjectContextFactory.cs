@@ -1,5 +1,4 @@
-﻿using Maui.Infrastructure.Helpers;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
 namespace Maui.Infrastructure.Configuration.SqlServer

@@ -22,7 +22,6 @@ namespace Maui.App.ViewModels.Login
             AddValidations();
         }
 
-
         [RelayCommand]
         public void Validate()
         {
@@ -39,7 +38,6 @@ namespace Maui.App.ViewModels.Login
         {
             await _navigationService.NavigateToAsync("//Project");
         }
-
 
         private readonly INavigationService _navigationService;
     }

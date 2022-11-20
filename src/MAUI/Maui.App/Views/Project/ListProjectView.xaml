@@ -52,7 +52,6 @@
                                     HeightRequest="24"
                                     Source="delete_forever_dark.png"
                                     WidthRequest="24" />
-
                             </Grid>
                         </Border>
                     </ViewCell>
@@ -85,7 +84,7 @@
                 <Picker.Behaviors>
                     <toolkit:EventToCommandBehavior Command="{Binding GetProjectsCommand}" EventName="SelectedIndexChanged" />
                 </Picker.Behaviors>
-            </Picker>            
+            </Picker>
             <Picker ItemsSource="{Binding SortOrders}" SelectedIndex="{Binding SelectedIndexSortOrder}">
                 <Picker.Behaviors>
                     <toolkit:EventToCommandBehavior Command="{Binding GetProjectsCommand}" EventName="SelectedIndexChanged" />

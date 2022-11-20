@@ -19,17 +19,16 @@ namespace Maui.Infrastructure.Repository
             _ = await _requestProvider.PutAsync($"{uri}/{project.Id}", project);
         }
 
-        public async Task<IEnumerable<ProjectModel>> List(QueryParameters queryParameters  = null)
+        public async Task<IEnumerable<ProjectModel>> List(QueryParameters queryParameters = null)
         {
             IEnumerable<ProjectModel> projects = await _requestProvider.GetAsync<IEnumerable<ProjectModel>>($"{baseURL}{PROJECTENDPOINT}", string.Empty, queryParameters).ConfigureAwait(false);
 
             return projects ?? Enumerable.Empty<ProjectModel>();
         }
 
-
         public async Task<int> Count()
         {
-           return await _requestProvider.GetAsync<int>($"{baseURL}{PROJECTENDPOINT}/Count", string.Empty).ConfigureAwait(false);
+            return await _requestProvider.GetAsync<int>($"{baseURL}{PROJECTENDPOINT}/Count", string.Empty).ConfigureAwait(false);
         }
 
         public async Task<ProjectModel> Add(ProjectModel project)
@@ -61,15 +60,14 @@ namespace Maui.Infrastructure.Repository
             return projects is null ? Enumerable.Empty<ProjectModel>() : projects.Where(expression) ?? Enumerable.Empty<ProjectModel>();
         }
 
-
         public async Task Delete(ProjectModel project)
         {
-             await _requestProvider.DeleteAsync($"{uri}/{project.Id}");
+            await _requestProvider.DeleteAsync($"{uri}/{project.Id}");
         }
 
         public Task<ProjectModel> FindById(int id)
         {
-            return _requestProvider.GetAsync < ProjectModel>($"{uri}/{id}");
+            return _requestProvider.GetAsync<ProjectModel>($"{uri}/{id}");
         }
 
         public Task<IEnumerable<ProjectModel>> ListExpression(Func<ProjectModel, bool> expression, string url, string token)

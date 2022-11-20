@@ -7,10 +7,12 @@ namespace Maui.Entity.Entity
     public class ProjectModel : EntityBase
     {
         #region field
+
         private string _name = "";
         private string _description = "";
         private DateTime _createAt;
         private DateTime _updatedAt;
+
         #endregion field
 
         [NotNull]
@@ -25,7 +27,6 @@ namespace Maui.Entity.Entity
             }
         }
 
-
         [NotNull]
         [Column("description")]
         public string Description
@@ -37,7 +38,6 @@ namespace Maui.Entity.Entity
                 NotifyPropertyChanged();
             }
         }
-
 
         [NotNull]
         [Column("createAt")]
@@ -62,7 +62,5 @@ namespace Maui.Entity.Entity
                 NotifyPropertyChanged();
             }
         }
-
-
     }
 }

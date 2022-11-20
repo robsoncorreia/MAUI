@@ -1,7 +1,4 @@
-﻿using System.Text.Json.Nodes;
-using System.Text;
-
-namespace Maui.Infrastructure.Helpers
+﻿namespace Maui.Infrastructure.Helpers
 {
     public class UriHelper
     {

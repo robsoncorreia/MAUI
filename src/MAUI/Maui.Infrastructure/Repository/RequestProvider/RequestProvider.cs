@@ -6,7 +6,6 @@ using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using System.Net;
 using System.Net.Http.Headers;
-using static System.Net.WebRequestMethods;
 
 namespace Maui.Infrastructure.Repository.RequestProvider
 {
@@ -46,7 +45,7 @@ namespace Maui.Infrastructure.Repository.RequestProvider
             {
                 uri = $"{uri}?{nameof(queryParameters.Page)}={queryParameters.Page}&" +
                             $"{nameof(queryParameters.Size)}={queryParameters.Size}&" +
-                            $"{nameof(queryParameters.SortBy)}={queryParameters.SortBy}&"+
+                            $"{nameof(queryParameters.SortBy)}={queryParameters.SortBy}&" +
                             $"{nameof(queryParameters.SortOrder)}={(int)queryParameters.SortOrder}";
             }
 
