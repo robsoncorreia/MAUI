@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Maui.Infrastructure.Query
+﻿namespace Maui.Infrastructure.Query
 {
     public class QueryParameters
     {
@@ -15,11 +9,17 @@ namespace Maui.Infrastructure.Query
 
         public decimal Size
         {
-            get { return _size; }
-            set
-            {
-                _size = Math.Min(_maxSize, value);
-            }
+            get => _size;
+            set => _size = Math.Min(_maxSize, value);
         }
+        public string SortBy { get; set; } = "Id";
+
+        public SortOrder SortOrder { get; set; } = SortOrder.Ascending;
+    }
+
+    public enum SortOrder
+    {
+        Ascending,
+        Descending
     }
 }

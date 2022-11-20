@@ -60,9 +60,9 @@
             </ListView.ItemTemplate>
         </ListView>
         <Border
-            HeightRequest="2"
             Grid.Row="1"
-            Stroke="{StaticResource DarkGreenColor}"/>
+            HeightRequest="2"
+            Stroke="{StaticResource DarkGreenColor}" />
         <HorizontalStackLayout
             Grid.Row="2"
             Margin="8"
@@ -80,6 +80,17 @@
                     </Style.Triggers>
                 </Style>
             </HorizontalStackLayout.Style>
+
+            <Picker ItemsSource="{Binding OrderBy}" SelectedIndex="{Binding SelectedIndexOrderBy}">
+                <Picker.Behaviors>
+                    <toolkit:EventToCommandBehavior Command="{Binding GetProjectsCommand}" EventName="SelectedIndexChanged" />
+                </Picker.Behaviors>
+            </Picker>            
+            <Picker ItemsSource="{Binding SortOrders}" SelectedIndex="{Binding SelectedIndexSortOrder}">
+                <Picker.Behaviors>
+                    <toolkit:EventToCommandBehavior Command="{Binding GetProjectsCommand}" EventName="SelectedIndexChanged" />
+                </Picker.Behaviors>
+            </Picker>
             <Button
                 Command="{Binding PageDownCommand}"
                 HorizontalOptions="Center"

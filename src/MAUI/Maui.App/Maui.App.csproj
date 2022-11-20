@@ -78,7 +78,6 @@
 	<ItemGroup>
 	  <Folder Include="Controls\" />
 	  <Folder Include="Exceptions\" />
-	  <Folder Include="Extensions\" />
 	  <Folder Include="Helpers\" />
 	  <Folder Include="Models\" />
 	  <Folder Include="Triggers\" />

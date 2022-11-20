@@ -31,6 +31,17 @@ namespace Maui.App.ViewModels.Project
         [ObservableProperty]
         private decimal pageCount = 0;
 
+        [ObservableProperty]
+        private int selectedIndexSortOrder;
+
+        [ObservableProperty]
+        private int selectedIndexOrderBy;
+
+        public List<string> SortOrders { get; } = new List<string> { Properties.Resources.Ascending, Properties.Resources.Descending };
+
+        public List<string> OrderBy { get; } = new List<string> { Properties.Resources.Name, Properties.Resources.Create_At };
+
+
         public ObservableCollection<ProjectModel> Projects { get; private set; }
 
         private readonly IProjectApplication _projectApplication;
@@ -146,11 +157,19 @@ namespace Maui.App.ViewModels.Project
 
                 Size = Size > Count ? Count : Size;
 
-                PageCount = (int)Math.Round((decimal)(Count / Size), MidpointRounding.ToPositiveInfinity);
+                PageCount = (int)Math.Round(Count / Size, MidpointRounding.ToPositiveInfinity);
 
                 Page = Page > PageCount ? PageCount : Page;
 
-                foreach (ProjectModel project in await _projectApplication.List(new QueryParameters { Page = Page, Size = Size }))
+                var query = new QueryParameters
+                {
+                    Page = Page,
+                    Size = Size,
+                    SortBy = GetSortBy(),
+                    SortOrder = (SortOrder)SelectedIndexSortOrder
+                };
+
+                foreach (ProjectModel project in await _projectApplication.List(query))
                 {
                     Projects.Add(project);
                 }
@@ -163,6 +182,16 @@ namespace Maui.App.ViewModels.Project
             {
                 IsBusy = false;
             }
+        }
+
+        private string GetSortBy()
+        {
+            return selectedIndexOrderBy switch
+            {
+                0 => nameof(ProjectModel.Name),
+                1 => nameof(ProjectModel.CreateAt),
+                _ => null
+            };
         }
 
         [RelayCommand]

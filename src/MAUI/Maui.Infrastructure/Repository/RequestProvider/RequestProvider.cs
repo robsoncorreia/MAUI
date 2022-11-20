@@ -44,7 +44,10 @@ namespace Maui.Infrastructure.Repository.RequestProvider
         {
             if (queryParameters is QueryParameters)
             {
-                uri = $"{uri}?Page={queryParameters.Page}&Size={queryParameters.Size}";
+                uri = $"{uri}?{nameof(queryParameters.Page)}={queryParameters.Page}&" +
+                            $"{nameof(queryParameters.Size)}={queryParameters.Size}&" +
+                            $"{nameof(queryParameters.SortBy)}={queryParameters.SortBy}&"+
+                            $"{nameof(queryParameters.SortOrder)}={(int)queryParameters.SortOrder}";
             }
 
             HttpClient httpClient = GetOrCreateHttpClient(token);

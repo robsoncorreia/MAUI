@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Ascending" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
   <data name="Click Me" xml:space="preserve">
     <value>Click Me</value>
   </data>
@@ -132,6 +135,9 @@
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
+  <data name="Create At" xml:space="preserve">
+    <value>Create At</value>
+  </data>
   <data name="Create Project" xml:space="preserve">
     <value>Create Project</value>
   </data>
@@ -140,6 +146,9 @@
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>Descending</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
@@ -161,6 +170,9 @@
   </data>
   <data name="List Project" xml:space="preserve">
     <value>List Project</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
   </data>
   <data name="Project created successfully" xml:space="preserve">
     <value>Project created successfully</value>

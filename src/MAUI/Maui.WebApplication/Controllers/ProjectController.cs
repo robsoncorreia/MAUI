@@ -1,5 +1,6 @@
 ﻿using Maui.Entity.Entity;
 using Maui.Infrastructure.Configuration.SqlServer;
+using Maui.Infrastructure.Extensions;
 using Maui.Infrastructure.Query;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,17 @@ namespace Maui.WebApplication.Controllers
         {
             IQueryable<ProjectModel> products = _context.Project;
 
+            if (!string.IsNullOrEmpty(queryParameters.SortBy))
+            {
+                if (typeof(ProjectModel).GetProperty(queryParameters.SortBy) is not null)
+                {
+                    products = products.OrderByCustom(
+                            queryParameters.SortBy,
+                            queryParameters.SortOrder
+                        );
+                }
+            }
+
             products = products
                 .Skip((int)(queryParameters.Size * (queryParameters.Page - 1)))
                 .Take((int)queryParameters.Size);
@@ -40,14 +52,9 @@ namespace Maui.WebApplication.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ProjectModel>> GetProjectById(int id)
         {
-            var projectModel = await _context.Project.FindAsync(id);
+            ProjectModel? projectModel = await _context.Project.FindAsync(id);
 
-            if (projectModel == null)
-            {
-                return NotFound();
-            }
-
-            return projectModel;
+            return projectModel == null ? (ActionResult<ProjectModel>)NotFound() : (ActionResult<ProjectModel>)projectModel;
         }
 
         // PUT: api/Project/5
@@ -86,8 +93,8 @@ namespace Maui.WebApplication.Controllers
         [HttpPost]
         public async Task<ActionResult<ProjectModel>> PostProject(ProjectModel projectModel)
         {
-            _context.Project.Add(projectModel);
-            await _context.SaveChangesAsync();
+            _ = _context.Project.Add(projectModel);
+            _ = await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProjectById", new { id = projectModel.Id }, projectModel);
         }
@@ -96,7 +103,7 @@ namespace Maui.WebApplication.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProject(int id)
         {
-            var projectModel = await _context.Project.FindAsync(id);
+            ProjectModel? projectModel = await _context.Project.FindAsync(id);
             if (projectModel == null)
             {
                 return NotFound();
