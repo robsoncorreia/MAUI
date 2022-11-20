@@ -81,15 +81,24 @@
             </HorizontalStackLayout.Style>
             <Entry
                 HorizontalOptions="Center"
+                Placeholder="{x:Static p:Resources.Search}"
                 ReturnCommand="{Binding GetProjectsCommand}"
                 Text="{Binding SearchTerm}"
-                VerticalOptions="Center" />
-            <Picker ItemsSource="{Binding OrderBy}" SelectedIndex="{Binding SelectedIndexOrderBy}">
+                VerticalOptions="End" />
+            <Picker
+                HorizontalOptions="Center"
+                ItemsSource="{Binding OrderBy}"
+                SelectedIndex="{Binding SelectedIndexOrderBy}"
+                VerticalOptions="End">
                 <Picker.Behaviors>
                     <toolkit:EventToCommandBehavior Command="{Binding GetProjectsCommand}" EventName="SelectedIndexChanged" />
                 </Picker.Behaviors>
             </Picker>
-            <Picker ItemsSource="{Binding SortOrders}" SelectedIndex="{Binding SelectedIndexSortOrder}">
+            <Picker
+                HorizontalOptions="Center"
+                ItemsSource="{Binding SortOrders}"
+                SelectedIndex="{Binding SelectedIndexSortOrder}"
+                VerticalOptions="End">
                 <Picker.Behaviors>
                     <toolkit:EventToCommandBehavior Command="{Binding GetProjectsCommand}" EventName="SelectedIndexChanged" />
                 </Picker.Behaviors>
@@ -98,38 +107,38 @@
                 Command="{Binding PageDownCommand}"
                 HorizontalOptions="Center"
                 Text="-"
-                VerticalOptions="Center" />
+                VerticalOptions="End" />
             <Entry
                 HorizontalOptions="Center"
                 IsReadOnly="True"
                 Keyboard="Numeric"
                 ReturnCommand="{Binding GetProjectsCommand}"
                 Text="{Binding Page}"
-                VerticalOptions="Center" />
+                VerticalOptions="End" />
             <Button
                 Command="{Binding PageUpCommand}"
                 HorizontalOptions="Center"
                 Text="+"
-                VerticalOptions="Center" />
+                VerticalOptions="End" />
             <Entry
                 HorizontalOptions="Center"
                 ReturnCommand="{Binding GetProjectsCommand}"
                 Text="{Binding Size}"
-                VerticalOptions="Center" />
+                VerticalOptions="End" />
             <Entry
                 Grid.Column="4"
                 HorizontalOptions="Center"
                 IsEnabled="False"
                 IsReadOnly="True"
                 Text="{Binding Count}"
-                VerticalOptions="Center" />
+                VerticalOptions="End" />
             <Entry
                 Grid.Column="5"
                 HorizontalOptions="Center"
                 IsEnabled="False"
                 IsReadOnly="True"
                 Text="{Binding PageCount}"
-                VerticalOptions="Center" />
+                VerticalOptions="End" />
         </HorizontalStackLayout>
         <Button
             Grid.Row="2"

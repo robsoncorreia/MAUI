@@ -7,6 +7,13 @@ string? connectionStrings = builder.Configuration["ConnectionStrings"];
 
 builder.Services.AddControllers();
 
+builder.Services.AddApiVersioning(options =>
+{
+    options.ReportApiVersions = true;
+    options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+});
+
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen();
@@ -14,7 +21,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MauiContext>(options =>
 {
     _ = options.UseSqlServer(connectionStrings);
-    //_ = options.UseInMemoryDatabase(Guid.NewGuid().ToString());
 });
 
 WebApplication app = builder.Build();

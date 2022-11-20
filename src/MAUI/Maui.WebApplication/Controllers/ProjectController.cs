@@ -7,13 +7,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Maui.WebApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    //[Route("api/[controller]")]
+    [Route("v{v:apiVersion}/projects")]
     [ApiController]
-    public class ProjectController : ControllerBase
+    public class ProjectV1Controller : ControllerBase
     {
         private readonly MauiContext _context;
 
-        public ProjectController(MauiContext context)
+        public ProjectV1Controller(MauiContext context)
         {
             _context = context;
         }
