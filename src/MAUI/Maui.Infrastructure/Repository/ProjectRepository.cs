@@ -9,7 +9,7 @@ namespace Maui.Infrastructure.Repository
     public class ProjectRepository : IGenericRepository<ProjectModel>, IProjectRepository, IDisposable
     {
         private readonly string baseURL;
-        private const string PROJECTENDPOINT = "v1.0/projects";
+        private const string PROJECTENDPOINT = "projects";
         private readonly IRequestProvider _requestProvider;
         private readonly string uri;
 

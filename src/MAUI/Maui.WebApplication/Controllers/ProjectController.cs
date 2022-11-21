@@ -9,7 +9,8 @@ namespace Maui.WebApplication.Controllers
 {
     [ApiVersion("1.0")]
     //[Route("api/[controller]")]
-    [Route("v{v:apiVersion}/projects")]
+    //[Route("v{v:apiVersion}/projects")]
+    [Route("projects")]
     [ApiController]
     public class ProjectV1Controller : ControllerBase
     {
